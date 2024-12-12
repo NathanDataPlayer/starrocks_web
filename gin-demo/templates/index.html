@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Routine Load and Material View Dashboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4; /* 背景色 */
+        }
+
+        .container {
+            max-width: 100%;
+            overflow-x: auto;
+            background: white; /* 容器白色背景 */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-container {
+            display: flex;
+            border-bottom: 2px solid #ddd;
+            margin-bottom: 10px;
+        }
+
+        .tab {
+            cursor: pointer;
+            padding: 12px 20px;
+            background: #f5f5f5;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            margin-right: 5px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .tab.active {
+            background-color: #ffffff; /* 选中的标签背景 */
+            color: #333; /* 选中的标签文字颜色 */
+            border-bottom: 2px solid #4CAF50; /* 选中标签低部边框颜色 */
+        }
+
+        .tab:hover {
+            background-color: #e0e0e0; /* 鼠标悬停效果 */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #ddd;
+            word-break: break-all;
+        }
+
+        th {
+            background-color: #f5f5f5;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        .state-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: bold;
+            color: white; /* 文字颜色 */
+        }
+        .state-badge.running {
+            background-color: #4CAF50; /* 绿色 */
+        }
+        .state-badge.paused {
+            background-color: #FF9800; /* 橘色 */
+        }
+        .state-badge.failed {
+            background-color: #F44336; /* 红色 */
+        }
+
+        .properties {
+            max-width: 300px;
+            white-space: pre-wrap;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin-right: 5px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3; /* 按钮悬停效果 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Routine Load and Material View Dashboard</h1>
+
+        <div class="tab-container">
+            <div id="routine-load-tab" class="tab active" onclick="showTab('routine-load')">Routine Load</div>
+            <div id="material-view-tab" class="tab" onclick="showTab('material-view')">Material View</div>
+        </div>
+
+        <div id="routine-load-section">
+            <button id="pause-routine-btn">Pause Selected</button>
+            <button id="resume-routine-btn">Resume Selected</button>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Select</th>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Database</th>
+                        <th>Table</th>
+                        <th>State</th>
+                        <th>Data Source Type</th>
+                        <th>Current Tasks</th>
+                        <th>Progress</th>
+                        <th>Timestamp Progress</th>
+                        <th>Pause Time</th>
+                        <th>State Change Reason</th>
+                        <th>Job Properties</th>
+                        <th>Data Source Properties</th>
+                        <th>Custom Properties</th>
+                        <th>Statistics</th>
+                        <th>Error Logs</th>
+                        <th>Other Messages</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{ range .routineLoads }}
+                    <tr>
+                        <td><input type="checkbox" class="task-checkbox" data-task-name="{{ .Name }}"></td>
+                        <td>{{ .Id }}</td>
+                        <td>{{ .Name }}</td>
+                        <td>{{ .DbName }}</td>
+                        <td>{{ .TableName }}</td>
+                        <td><span class="state-badge {{ .State | toLower }}">{{ .State }}</span></td>
+                        <td>{{ .DataSourceType }}</td>
+                        <td>{{ .CurrentTaskNum }}</td>
+                        <td>{{ .Progress }}</td>
+                        <td>{{ .TimestampProgress }}</td>
+                        <td>{{ .PauseTime }}</td>
+                        <td>{{ .ReasonOfStateChanged }}</td>
+                        <td class="properties">{{ .JobProperties }}</td>
+                        <td class="properties">{{ .DataSourceProperties }}</td>
+                        <td class="properties">{{ .CustomProperties }}</td>
+                        <td class="properties">{{ .Statistic }}</td>
+                        <td>
+                            {{ if .ErrorLogUrls }}
+                            <a href="{{ .ErrorLogUrls }}" target="_blank">View Logs</a>
+                            {{ else }}
+                            -
+                            {{ end }}
+                        </td>
+                        <td>{{ .OtherMsg }}</td>
+                    </tr>
+                    {{ end }}
+                </tbody>
+            </table>
+        </div>
+
+        <div id="material-view-section" style="display:none;">
+            <button id="pause-view-btn">Pause Selected</button>
+            <button id="resume-view-btn">Resume Selected</button>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Select</th>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Database Name</th>
+                        <th>Text</th>
+                        <th>Rows</th>
+                    </tr>
+                </thead>
+                <tbody id="material-view-body">
+                    <!-- 数据将通过 JavaScript 动态填充 -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tab) {
+            if (tab === 'routine-load') {
+                document.getElementById('routine-load-section').style.display = 'block';
+                document.getElementById('material-view-section').style.display = 'none';
+                document.getElementById('routine-load-tab').classList.add('active');
+                document.getElementById('material-view-tab').classList.remove('active');
+            } else {
+                document.getElementById('routine-load-section').style.display = 'none';
+                document.getElementById('material-view-section').style.display = 'block';
+                document.getElementById('material-view-tab').classList.add('active');
+                document.getElementById('routine-load-tab').classList.remove('active');
+                loadMaterialViews(); // 切换到 Material View 时加载数据
+            }
+        }
+
+        function loadMaterialViews() {
+            fetch('/material-view')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const tbody = document.getElementById('material-view-body');
+                    tbody.innerHTML = ''; // 清空之前的数据
+
+                    data.materialViews.forEach(view => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td><input type="checkbox" class="view-checkbox" data-view-name="${view.name}"></td>
+                            <td>${view.id}</td>
+                            <td>${view.name}</td>
+                            <td>${view.database_name}</td>
+                            <td><pre>${view.text}</pre></td>
+                            <td>${view.rows}</td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching material views:', error);
+                });
+        }
+
+        document.getElementById('pause-routine-btn').addEventListener('click', function() {
+            let selectedTasks = Array.from(document.querySelectorAll('.task-checkbox:checked')).map(cb => cb.dataset.taskName);
+            if (selectedTasks.length === 0) {
+                alert("No task selected for pause.");
+                return;
+            }
+
+            fetch('/routine-load/pause', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ tasks: selectedTasks })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Pause action: ' + data.status);
+                // 可以更新表格状态
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to pause routine load.');
+            });
+        });
+
+        document.getElementById('resume-routine-btn').addEventListener('click', function() {
+            let selectedTasks = Array.from(document.querySelectorAll('.task-checkbox:checked')).map(cb => cb.dataset.taskName);
+            if (selectedTasks.length === 0) {
+                alert("No task selected for resume.");
+                return;
+            }
+
+            fetch('/routine-load/resume', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ tasks: selectedTasks })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Resume action: ' + data.status);
+                // 可以更新表格状态
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to resume routine load.');
+            });
+        });
+
+        document.getElementById('pause-view-btn').addEventListener('click', function() {
+            let selectedViews = Array.from(document.querySelectorAll('.view-checkbox:checked')).map(cb => cb.dataset.viewName);
+            if (selectedViews.length === 0) {
+                alert("No material view selected for pause.");
+                return;
+            }
+
+            fetch('/material-view/deactivate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ views: selectedViews })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Pause action: ' + data.status);
+                // 可以更新表格状态
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to pause material view.');
+            });
+        });
+
+        document.getElementById('resume-view-btn').addEventListener('click', function() {
+            let selectedViews = Array.from(document.querySelectorAll('.view-checkbox:checked')).map(cb => cb.dataset.viewName);
+            if (selectedViews.length === 0) {
+                alert("No material view selected for resume.");
+                return;
+            }
+
+            fetch('/material-view/activate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ views: selectedViews })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Resume action: ' + data.status);
+                // 可以更新表格状态
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to resume material view.');
+            });
+        });
+    </script>
+</body>
+</html>
+
