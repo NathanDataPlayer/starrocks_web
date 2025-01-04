@@ -74,6 +74,27 @@
             background-color: #fafafa;
         }
 
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .pagination button {
+            margin: 0 5px;
+            padding: 5px 10px;
+            border: 1px solid #007BFF;
+            background: #ffffff;
+            color: #007BFF;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .pagination button:hover {
+            background: #007BFF;
+            color: white;
+        }
+
         .state-badge {
             display: inline-block;
             padding: 4px 8px;
@@ -113,6 +134,7 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background 0.3s;
+            height: 40px; /* 设置按钮高度 */
         }
 
         button:hover {
@@ -124,6 +146,34 @@
             height: 500px;
             border: 1px solid lightgray;
             margin-top: 20px;
+        }
+
+        /* 数据库选择下拉框样式 */
+        #dbSelector {
+            height: 40px; /* 设置选择框高度 */
+            width: 220px; /* 设置宽度，可以根据需要调整 */
+            padding: 0 10px; /* 添加内边距 */
+            border: 1px solid #ccc; /* 边框样式 */
+            border-radius: 5px; /* 边框圆角 */
+            margin-bottom: 20px; /* 为选择数据库的下拉列表添加底部边距 */
+            appearance: none; /* 去掉默认样式，使其更一致 */
+        }
+
+        /* 为搜索框和按钮设置统一的样式 */
+        #search-container {
+            margin-bottom: 20px;
+        }
+
+        #search-input {
+            height: 40px; /* 设置搜索框高度 */
+            width: 200px; /* 可以根据需要调整宽度 */
+            padding: 0 10px; /* 添加内边距 */
+            border: 1px solid #ccc; /* 边框样式 */
+            border-radius: 5px;
+        }
+
+        #search-button {
+            height: 40px; /* 确保与搜索框一致的高度 */
         }
     </style>
 </head>
@@ -182,6 +232,7 @@
                     <!-- 数据将通过 JavaScript 动态填充 -->
                 </tbody>
             </table>
+            <div class="pagination" id="routine-load-pagination"></div>
         </div>
 
         <div id="material-view-section" style="display:none;">
@@ -211,6 +262,7 @@
                     <!-- 数据将通过 JavaScript 动态填充 -->
                 </tbody>
             </table>
+            <div class="pagination" id="material-view-pagination"></div>
         </div>
 
         <div id="dependency-view-section" style="display:none;">
@@ -237,14 +289,21 @@
                     <!-- 数据将通过 JavaScript 动态填充 -->
                 </tbody>
             </table>
+            <div class="pagination" id="dependency-view-pagination"></div>
         </div>
     </div>
 
     <script>
         let allDependencies = []; //用于保存所有依赖关系
+        let routineLoadsData = []; // 用于存储例程加载数据
+        let materialViewsData = []; // 用于存储物化视图数据
+        const pageSize = 10; // 每页显示数量
+        let routineLoadCurrentPage = 1; // 当前例程加载页面
+        let materialViewCurrentPage = 1; // 当前物化视图页面
+        let dependencyCurrentPage = 1; // 当前依赖关系页面
 
         // 页面加载时获取可用的数据库列表
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             fetch('/databases')
                 .then(response => {
                     if (!response.ok) {
@@ -303,37 +362,9 @@
                     return response.json();
                 })
                 .then(data => {
-                    const tbody = document.getElementById('routine-load-body');
-                    tbody.innerHTML = ''; // 清空之前的数据
-
-                    data.routineLoads.forEach(load => {
-                        const tr = document.createElement('tr');
-                        tr.innerHTML = `
-                            <td><input type="checkbox" class="task-checkbox" data-task-name="${load.name}"></td>
-                            <td>${load.id}</td>
-                            <td>${load.name}</td>
-                            <td>${load.create_time}</td>
-                            <td>${load.pause_time || '-'}</td>
-                            <td>${load.end_time || '-'}</td>
-                            <td>${load.db_name}</td>
-                            <td>${load.table_name}</td>
-                            <td><span class="state-badge ${load.state.toLowerCase()}">${load.state}</span></td>
-                            <td>${load.data_source_type}</td>
-                            <td>${load.current_task_num}</td>
-                            <td class="properties">${load.job_properties}</td>
-                            <td class="properties">${load.data_source_properties}</td>
-                            <td class="properties">${load.custom_properties}</td>
-                            <td class="properties">${load.statistic}</td>
-                            <td class="properties">${load.progress}</td>
-                            <td class="properties">${load.timestamp_progress}</td>
-                            <td>${load.reason_of_state_changed || '-'}</td>
-                            <td>${load.error_log_urls ? `<a href="${load.error_log_urls}" target="_blank">View Logs</a>` : '-'}</td>
-                            <td>${load.tracking_sql || '-'}</td>
-                            <td>${load.other_msg || '-'}</td>
-                            <td class="properties">${load.latest_source_position}</td>
-                        `;
-                        tbody.appendChild(tr);
-                    });
+                    routineLoadsData = data.routineLoads; // 存储所有数据
+                    displayRoutineLoads(); // 显示当前页面数据
+                    renderRoutineLoadPagination(); // 渲染分页控件
                 })
                 .catch(error => {
                     console.error('获取例程加载时出错:', error);
@@ -354,37 +385,9 @@
                     return response.json();
                 })
                 .then(data => {
-                    const tbody = document.getElementById('material-view-body');
-                    tbody.innerHTML = ''; // 清空之前的数据
-
-                    data.materialViews.forEach(view => {
-                        const tr = document.createElement('tr');
-                        const isActiveBadge = view.is_active ? '是' : '否';
-                        const lastRefreshStateBadge = view.last_refresh_state.toLowerCase();
-                        const lastRefreshStateColor = {
-                            'success': 'running',
-                            'failed': 'failed',
-                            'paused': 'paused'
-                        }[lastRefreshStateBadge] || 'unknown';
-
-                        tr.innerHTML = `
-                            <td><input type="checkbox" class="view-checkbox" data-view-name="${view.name}"></td>
-                            <td>${view.id}</td>
-                            <td>${view.name}</td>
-                            <td>${view.database_name}</td>
-                            <td>${view.refresh_type}</td>
-                            <td>${isActiveBadge}</td>
-                            <td><span class="state-badge ${lastRefreshStateColor}">${view.last_refresh_state}</span></td>
-                            <td>${view.rows}</td>
-                            <td>${view.last_refresh_start_time}</td>
-                            <td>${view.last_refresh_finished_time || '-'}</td>
-                            <td>${view.last_refresh_base_refresh_partitions}</td>
-                            <td>${view.last_refresh_mv_refresh_partitions}</td>
-                            <td>${view.last_refresh_error_code}</td>
-                            <td>${view.last_refresh_error_message || '-'}</td>
-                        `;
-                        tbody.appendChild(tr);
-                    });
+                    materialViewsData = data.materialViews; // 存储所有数据
+                    displayMaterialViews(); // 显示当前页面数据
+                    renderMaterialViewPagination(); // 渲染分页控件
                 })
                 .catch(error => {
                     console.error('获取物化视图时出错:', error);
@@ -412,17 +415,95 @@
                     // 默认展示所有依赖关系的表格
                     displayDependencies(allDependencies);
                     renderDependencyGraph(allDependencies); // 默认展示依赖关系图
+                    renderDependencyPagination(); // 渲染分页控件
                 })
                 .catch(error => {
                     console.error('获取物化视图依赖关系时出错:', error);
                 });
         }
 
+        function displayRoutineLoads() {
+            const tbody = document.getElementById('routine-load-body');
+            tbody.innerHTML = ''; // 清空之前的数据
+            const start = (routineLoadCurrentPage - 1) * pageSize; // 计算起始索引
+            const end = start + pageSize; // 计算结束索引
+            const currentPageData = routineLoadsData.slice(start, end); // 当前页面数据
+
+            currentPageData.forEach(load => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><input type="checkbox" class="task-checkbox" data-task-name="${load.name}"></td>
+                    <td>${load.id}</td>
+                    <td>${load.name}</td>
+                    <td>${load.create_time}</td>
+                    <td>${load.pause_time || '-'}</td>
+                    <td>${load.end_time || '-'}</td>
+                    <td>${load.db_name}</td>
+                    <td>${load.table_name}</td>
+                    <td><span class="state-badge ${load.state.toLowerCase()}">${load.state}</span></td>
+                    <td>${load.data_source_type}</td>
+                    <td>${load.current_task_num}</td>
+                    <td class="properties">${load.job_properties}</td>
+                    <td class="properties">${load.data_source_properties}</td>
+                    <td class="properties">${load.custom_properties}</td>
+                    <td class="properties">${load.statistic}</td>
+                    <td class="properties">${load.progress}</td>
+                    <td class="properties">${load.timestamp_progress}</td>
+                    <td>${load.reason_of_state_changed || '-'}</td>
+                    <td>${load.error_log_urls ? `<a href="${load.error_log_urls}" target="_blank">View Logs</a>` : '-'}</td>
+                    <td>${load.tracking_sql || '-'}</td>
+                    <td>${load.other_msg || '-'}</td>
+                    <td class="properties">${load.latest_source_position}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function displayMaterialViews() {
+            const tbody = document.getElementById('material-view-body');
+            tbody.innerHTML = ''; // 清空之前的数据
+            const start = (materialViewCurrentPage - 1) * pageSize; // 计算起始索引
+            const end = start + pageSize; // 计算结束索引
+            const currentPageData = materialViewsData.slice(start, end); // 当前页面数据
+
+            currentPageData.forEach(view => {
+                const tr = document.createElement('tr');
+                const isActiveBadge = view.is_active ? '是' : '否';
+                const lastRefreshStateBadge = view.last_refresh_state.toLowerCase();
+                const lastRefreshStateColor = {
+                    'success': 'running',
+                    'failed': 'failed',
+                    'paused': 'paused'
+                }[lastRefreshStateBadge] || 'unknown';
+
+                tr.innerHTML = `
+                    <td><input type="checkbox" class="view-checkbox" data-view-name="${view.name}"></td>
+                    <td>${view.id}</td>
+                    <td>${view.name}</td>
+                    <td>${view.database_name}</td>
+                    <td>${view.refresh_type}</td>
+                    <td>${isActiveBadge}</td>
+                    <td><span class="state-badge ${lastRefreshStateColor}">${view.last_refresh_state}</span></td>
+                    <td>${view.rows}</td>
+                    <td>${view.last_refresh_start_time}</td>
+                    <td>${view.last_refresh_finished_time || '-'}</td>
+                    <td>${view.last_refresh_base_refresh_partitions}</td>
+                    <td>${view.last_refresh_mv_refresh_partitions}</td>
+                    <td>${view.last_refresh_error_code}</td>
+                    <td>${view.last_refresh_error_message || '-'}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
         function displayDependencies(dependencies) {
             const tbody = document.getElementById('dependency-body');
             tbody.innerHTML = ''; // 清空之前的数据
+            const start = (dependencyCurrentPage - 1) * pageSize; // 计算起始索引
+            const end = start + pageSize; // 计算结束索引
+            const currentPageData = dependencies.slice(start, end); // 当前页面数据
 
-            dependencies.forEach(dep => {
+            currentPageData.forEach(dep => {
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
                     <td>${dep.object_id}</td>
@@ -436,6 +517,63 @@
                 `;
                 tbody.appendChild(tr);
             });
+        }
+
+        function renderRoutineLoadPagination() {
+            const pagination = document.getElementById('routine-load-pagination');
+            pagination.innerHTML = '';
+
+            const totalPages = Math.ceil(routineLoadsData.length / pageSize); // 计算总页数
+            for (let i = 1; i <= totalPages; i++) {
+                const button = document.createElement('button');
+                button.innerText = i;
+                button.onclick = () => {
+                    routineLoadCurrentPage = i; // 更新当前页面
+                    displayRoutineLoads(); // 显示当前页面数据
+                };
+                if (i === routineLoadCurrentPage) {
+                    button.disabled = true; // 当前页禁用按钮
+                }
+                pagination.appendChild(button);
+            }
+        }
+
+        function renderMaterialViewPagination() {
+            const pagination = document.getElementById('material-view-pagination');
+            pagination.innerHTML = '';
+
+            const totalPages = Math.ceil(materialViewsData.length / pageSize); // 计算总页数
+            for (let i = 1; i <= totalPages; i++) {
+                const button = document.createElement('button');
+                button.innerText = i;
+                button.onclick = () => {
+                    materialViewCurrentPage = i; // 更新当前页面
+                    displayMaterialViews(); // 显示当前页面数据
+                };
+                if (i === materialViewCurrentPage) {
+                    button.disabled = true; // 当前页禁用按钮
+                }
+                pagination.appendChild(button);
+            }
+        }
+
+        function renderDependencyPagination() {
+            const pagination = document.getElementById('dependency-view-pagination');
+            pagination.innerHTML = '';
+
+            const totalPages = Math.ceil(allDependencies.length / pageSize); // 计算总页数
+            for (let i = 1; i <= totalPages; i++) {
+                const button = document.createElement('button');
+                button.innerText = i;
+                button.onclick = () => {
+                    dependencyCurrentPage = i; // 更新当前页面
+                    displayDependencies(allDependencies); // 显示当前页面数据
+                };
+                if (i === dependencyCurrentPage) {
+                    button.disabled = true; // 当前页禁用按钮
+                }
+                pagination.appendChild(button);
+            }
         }
 
         function renderDependencyGraph(dependencies) {
