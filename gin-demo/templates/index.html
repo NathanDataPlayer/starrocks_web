@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
+
 <head>
-    <title>Routine Load and Material View Dashboard</title>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Routine Load and Material View Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/vis-network/styles/vis-network.css" />
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
-            background-color: #f4f4f4; /* 背景色 */
+            background-color: #f4f4f4;
         }
 
         .container {
             max-width: 100%;
             overflow-x: auto;
-            background: white; /* 容器白色背景 */
+            background: white;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -38,13 +41,13 @@
         }
 
         .tab.active {
-            background-color: #ffffff; /* 选中的标签背景 */
-            color: #333; /* 选中的标签文字颜色 */
-            border-bottom: 2px solid #4CAF50; /* 选中标签低部边框颜色 */
+            background-color: #ffffff;
+            color: #333;
+            border-bottom: 2px solid #4CAF50;
         }
 
         .tab:hover {
-            background-color: #e0e0e0; /* 鼠标悬停效果 */
+            background-color: #e0e0e0;
         }
 
         table {
@@ -54,7 +57,8 @@
             font-size: 14px;
         }
 
-        th, td {
+        th,
+        td {
             padding: 8px;
             text-align: left;
             border: 1px solid #ddd;
@@ -76,16 +80,23 @@
             border-radius: 3px;
             font-size: 12px;
             font-weight: bold;
-            color: white; /* 文字颜色 */
+            color: white;
         }
+
         .state-badge.running {
-            background-color: #4CAF50; /* 绿色 */
+            background-color: #4CAF50;
         }
+
         .state-badge.paused {
-            background-color: #FF9800; /* 橘色 */
+            background-color: #FF9800;
         }
+
         .state-badge.failed {
-            background-color: #F44336; /* 红色 */
+            background-color: #F44336;
+        }
+
+        .state-badge.unknown {
+            background-color: #9E9E9E;
         }
 
         .properties {
@@ -105,22 +116,40 @@
         }
 
         button:hover {
-            background-color: #0056b3; /* 按钮悬停效果 */
+            background-color: #0056b3;
+        }
+
+        #network {
+            width: 100%;
+            height: 500px;
+            border: 1px solid lightgray;
+            margin-top: 20px;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>Routine Load and Material View Dashboard</h1>
 
+        <!-- 数据库选择下拉框 -->
+        <div>
+            <label for="dbSelector">选择数据库:</label>
+            <select id="dbSelector">
+                <option value="">请选择数据库</option>
+                <!-- 数据库选项将通过 JavaScript 填充 -->
+            </select>
+        </div>
+
         <div class="tab-container">
             <div id="routine-load-tab" class="tab active" onclick="showTab('routine-load')">Routine Load</div>
             <div id="material-view-tab" class="tab" onclick="showTab('material-view')">Material View</div>
+            <div id="dependency-view-tab" class="tab" onclick="showTab('dependencies')">Material View Dependencies</div>
         </div>
 
         <div id="routine-load-section">
-            <button id="pause-routine-btn">Pause Selected</button>
-            <button id="resume-routine-btn">Resume Selected</button>
+            <button id="pause-routine-btn" onclick="pauseSelectedRoutineLoads()">Pause Selected</button>
+            <button id="resume-routine-btn" onclick="resumeSelectedRoutineLoads()">Resume Selected</button>
 
             <table>
                 <thead>
@@ -128,59 +157,36 @@
                         <th>Select</th>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Database</th>
-                        <th>Table</th>
+                        <th>Create Time</th>
+                        <th>Pause Time</th>
+                        <th>End Time</th>
+                        <th>Database Name</th>
+                        <th>Table Name</th>
                         <th>State</th>
                         <th>Data Source Type</th>
-                        <th>Current Tasks</th>
-                        <th>Progress</th>
-                        <th>Timestamp Progress</th>
-                        <th>Pause Time</th>
-                        <th>State Change Reason</th>
+                        <th>Current Task Number</th>
                         <th>Job Properties</th>
                         <th>Data Source Properties</th>
                         <th>Custom Properties</th>
                         <th>Statistics</th>
-                        <th>Error Logs</th>
+                        <th>Progress</th>
+                        <th>Timestamp Progress</th>
+                        <th>Reason of State Changed</th>
+                        <th>Error Log URLs</th>
+                        <th>Tracking SQL</th>
                         <th>Other Messages</th>
+                        <th>Latest Source Position</th>
                     </tr>
                 </thead>
-                <tbody>
-                    {{ range .routineLoads }}
-                    <tr>
-                        <td><input type="checkbox" class="task-checkbox" data-task-name="{{ .Name }}"></td>
-                        <td>{{ .Id }}</td>
-                        <td>{{ .Name }}</td>
-                        <td>{{ .DbName }}</td>
-                        <td>{{ .TableName }}</td>
-                        <td><span class="state-badge {{ .State | toLower }}">{{ .State }}</span></td>
-                        <td>{{ .DataSourceType }}</td>
-                        <td>{{ .CurrentTaskNum }}</td>
-                        <td>{{ .Progress }}</td>
-                        <td>{{ .TimestampProgress }}</td>
-                        <td>{{ .PauseTime }}</td>
-                        <td>{{ .ReasonOfStateChanged }}</td>
-                        <td class="properties">{{ .JobProperties }}</td>
-                        <td class="properties">{{ .DataSourceProperties }}</td>
-                        <td class="properties">{{ .CustomProperties }}</td>
-                        <td class="properties">{{ .Statistic }}</td>
-                        <td>
-                            {{ if .ErrorLogUrls }}
-                            <a href="{{ .ErrorLogUrls }}" target="_blank">View Logs</a>
-                            {{ else }}
-                            -
-                            {{ end }}
-                        </td>
-                        <td>{{ .OtherMsg }}</td>
-                    </tr>
-                    {{ end }}
+                <tbody id="routine-load-body">
+                    <!-- 数据将通过 JavaScript 动态填充 -->
                 </tbody>
             </table>
         </div>
 
         <div id="material-view-section" style="display:none;">
-            <button id="pause-view-btn">Pause Selected</button>
-            <button id="resume-view-btn">Resume Selected</button>
+            <button id="pause-view-btn" onclick="pauseSelectedMaterialViews()">Pause Selected</button>
+            <button id="resume-view-btn" onclick="resumeSelectedMaterialViews()">Resume Selected</button>
 
             <table>
                 <thead>
@@ -189,8 +195,16 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Database Name</th>
-                        <th>Text</th>
+                        <th>Refresh Type</th>
+                        <th>Is Active</th>
+                        <th>Last Refresh State</th>
                         <th>Rows</th>
+                        <th>Last Refresh Start Time</th>
+                        <th>Last Refresh Finished Time</th>
+                        <th>Last Refresh Base Partitions</th>
+                        <th>Last Refresh MV Partitions</th>
+                        <th>Last Refresh Error Code</th>
+                        <th>Last Refresh Error Message</th>
                     </tr>
                 </thead>
                 <tbody id="material-view-body">
@@ -198,29 +212,144 @@
                 </tbody>
             </table>
         </div>
+
+        <div id="dependency-view-section" style="display:none;">
+            <h3>Material View Dependencies</h3>
+            <div id="search-container">
+                <input type="text" id="search-input" placeholder="搜索 Object Name">
+                <button id="search-button">搜索</button>
+            </div>
+            <div id="network"></div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Object ID</th>
+                        <th>Object Name</th>
+                        <th>Object Database</th>
+                        <th>Object Type</th>
+                        <th>Referenced Object ID</th>
+                        <th>Referenced Object Name</th>
+                        <th>Referenced Object Database</th>
+                        <th>Referenced Object Type</th>
+                    </tr>
+                </thead>
+                <tbody id="dependency-body">
+                    <!-- 数据将通过 JavaScript 动态填充 -->
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <script>
+        let allDependencies = []; //用于保存所有依赖关系
+
+        // 页面加载时获取可用的数据库列表
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/databases')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('网络响应出错');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const dbSelector = document.getElementById('dbSelector');
+                    data.databases.forEach(db => {
+                        const option = document.createElement('option');
+                        option.value = db;
+                        option.textContent = db;
+                        dbSelector.appendChild(option);
+                    });
+                })
+                .catch(error => {
+                    console.error('获取数据库列表时出错:', error);
+                });
+        });
+
         function showTab(tab) {
+            document.getElementById('routine-load-section').style.display = 'none';
+            document.getElementById('material-view-section').style.display = 'none';
+            document.getElementById('dependency-view-section').style.display = 'none';
+            document.getElementById('routine-load-tab').classList.remove('active');
+            document.getElementById('material-view-tab').classList.remove('active');
+            document.getElementById('dependency-view-tab').classList.remove('active');
+
             if (tab === 'routine-load') {
                 document.getElementById('routine-load-section').style.display = 'block';
-                document.getElementById('material-view-section').style.display = 'none';
                 document.getElementById('routine-load-tab').classList.add('active');
-                document.getElementById('material-view-tab').classList.remove('active');
-            } else {
-                document.getElementById('routine-load-section').style.display = 'none';
+                loadRoutineLoads(); // 切换到 Routine Load 时加载数据
+            } else if (tab === 'material-view') {
                 document.getElementById('material-view-section').style.display = 'block';
                 document.getElementById('material-view-tab').classList.add('active');
-                document.getElementById('routine-load-tab').classList.remove('active');
                 loadMaterialViews(); // 切换到 Material View 时加载数据
+            } else if (tab === 'dependencies') {
+                document.getElementById('dependency-view-section').style.display = 'block';
+                document.getElementById('dependency-view-tab').classList.add('active');
+                loadMaterialViewDependencies(); // 切换到依赖关系时加载数据
             }
         }
 
-        function loadMaterialViews() {
-            fetch('/material-view')
+        function loadRoutineLoads() {
+            const dbName = document.getElementById('dbSelector').value;
+            if (!dbName) {
+                alert('请先选择数据库');
+                return;
+            }
+            fetch(`/routine-load?db=${dbName}`)
                 .then(response => {
                     if (!response.ok) {
-                        throw new Error('Network response was not ok');
+                        throw new Error('网络响应出错');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const tbody = document.getElementById('routine-load-body');
+                    tbody.innerHTML = ''; // 清空之前的数据
+
+                    data.routineLoads.forEach(load => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td><input type="checkbox" class="task-checkbox" data-task-name="${load.name}"></td>
+                            <td>${load.id}</td>
+                            <td>${load.name}</td>
+                            <td>${load.create_time}</td>
+                            <td>${load.pause_time || '-'}</td>
+                            <td>${load.end_time || '-'}</td>
+                            <td>${load.db_name}</td>
+                            <td>${load.table_name}</td>
+                            <td><span class="state-badge ${load.state.toLowerCase()}">${load.state}</span></td>
+                            <td>${load.data_source_type}</td>
+                            <td>${load.current_task_num}</td>
+                            <td class="properties">${load.job_properties}</td>
+                            <td class="properties">${load.data_source_properties}</td>
+                            <td class="properties">${load.custom_properties}</td>
+                            <td class="properties">${load.statistic}</td>
+                            <td class="properties">${load.progress}</td>
+                            <td class="properties">${load.timestamp_progress}</td>
+                            <td>${load.reason_of_state_changed || '-'}</td>
+                            <td>${load.error_log_urls ? `<a href="${load.error_log_urls}" target="_blank">View Logs</a>` : '-'}</td>
+                            <td>${load.tracking_sql || '-'}</td>
+                            <td>${load.other_msg || '-'}</td>
+                            <td class="properties">${load.latest_source_position}</td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+                })
+                .catch(error => {
+                    console.error('获取例程加载时出错:', error);
+                });
+        }
+
+        function loadMaterialViews() {
+            const dbName = document.getElementById('dbSelector').value;
+            if (!dbName) {
+                alert('请先选择数据库');
+                return;
+            }
+            fetch(`/material-view?db=${dbName}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('网络响应出错');
                     }
                     return response.json();
                 })
@@ -230,26 +359,123 @@
 
                     data.materialViews.forEach(view => {
                         const tr = document.createElement('tr');
+                        const isActiveBadge = view.is_active ? '是' : '否';
+                        const lastRefreshStateBadge = view.last_refresh_state.toLowerCase();
+                        const lastRefreshStateColor = {
+                            'success': 'running',
+                            'failed': 'failed',
+                            'paused': 'paused'
+                        }[lastRefreshStateBadge] || 'unknown';
+
                         tr.innerHTML = `
                             <td><input type="checkbox" class="view-checkbox" data-view-name="${view.name}"></td>
                             <td>${view.id}</td>
                             <td>${view.name}</td>
                             <td>${view.database_name}</td>
-                            <td><pre>${view.text}</pre></td>
+                            <td>${view.refresh_type}</td>
+                            <td>${isActiveBadge}</td>
+                            <td><span class="state-badge ${lastRefreshStateColor}">${view.last_refresh_state}</span></td>
                             <td>${view.rows}</td>
+                            <td>${view.last_refresh_start_time}</td>
+                            <td>${view.last_refresh_finished_time || '-'}</td>
+                            <td>${view.last_refresh_base_refresh_partitions}</td>
+                            <td>${view.last_refresh_mv_refresh_partitions}</td>
+                            <td>${view.last_refresh_error_code}</td>
+                            <td>${view.last_refresh_error_message || '-'}</td>
                         `;
                         tbody.appendChild(tr);
                     });
                 })
                 .catch(error => {
-                    console.error('Error fetching material views:', error);
+                    console.error('获取物化视图时出错:', error);
                 });
         }
 
-        document.getElementById('pause-routine-btn').addEventListener('click', function() {
-            let selectedTasks = Array.from(document.querySelectorAll('.task-checkbox:checked')).map(cb => cb.dataset.taskName);
+        function loadMaterialViewDependencies() {
+            const dbName = document.getElementById('dbSelector').value;
+            if (!dbName) {
+                alert('请先选择数据库');
+                return;
+            }
+            fetch(`/material-view-dependencies?db=${dbName}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('网络响应出错');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const tbody = document.getElementById('dependency-body');
+                    tbody.innerHTML = ''; // 清空之前的数据
+                    allDependencies = data.dependencies; // 保存所有依赖关系
+
+                    // 默认展示所有依赖关系的表格
+                    displayDependencies(allDependencies);
+                    renderDependencyGraph(allDependencies); // 默认展示依赖关系图
+                })
+                .catch(error => {
+                    console.error('获取物化视图依赖关系时出错:', error);
+                });
+        }
+
+        function displayDependencies(dependencies) {
+            const tbody = document.getElementById('dependency-body');
+            tbody.innerHTML = ''; // 清空之前的数据
+
+            dependencies.forEach(dep => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${dep.object_id}</td>
+                    <td>${dep.object_name}</td>
+                    <td>${dep.object_database}</td>
+                    <td>${dep.object_type}</td>
+                    <td>${dep.ref_object_id}</td>
+                    <td>${dep.ref_object_name}</td>
+                    <td>${dep.ref_object_database}</td>
+                    <td>${dep.ref_object_type}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function renderDependencyGraph(dependencies) {
+            const nodes = new vis.DataSet();
+            const edges = new vis.DataSet();
+
+            dependencies.forEach(dep => {
+                if (!nodes.get(dep.object_id)) {
+                    nodes.add({ id: dep.object_id, label: dep.object_name, title: dep.object_database });
+                }
+                if (!nodes.get(dep.ref_object_id)) {
+                    nodes.add({ id: dep.ref_object_id, label: dep.ref_object_name, title: dep.ref_object_database });
+                }
+
+                edges.add({ from: dep.object_id, to: dep.ref_object_id });
+            });
+
+            const container = document.getElementById('network');
+            const dataVis = {
+                nodes: nodes,
+                edges: edges
+            };
+
+            const options = {
+                nodes: {
+                    shape: 'box'
+                },
+                edges: {
+                    arrows: 'to'
+                }
+            };
+
+            const network = new vis.Network(container, dataVis, options);
+        }
+
+        // 控制暂停和恢复
+        function pauseSelectedRoutineLoads() {
+            const selectedTasks = Array.from(document.querySelectorAll('.task-checkbox:checked')).map(cb => cb.dataset.taskName);
             if (selectedTasks.length === 0) {
-                alert("No task selected for pause.");
+                alert('请先选择需要暂停的任务');
                 return;
             }
 
@@ -260,21 +486,25 @@
                 },
                 body: JSON.stringify({ tasks: selectedTasks })
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('网络响应出错');
+                }
+                return response.json();
+            })
             .then(data => {
-                alert('Pause action: ' + data.status);
-                // 可以更新表格状态
+                alert('已暂停选择的任务');
+                loadRoutineLoads(); // 刷新任务列表
             })
             .catch(error => {
-                console.error('Error:', error);
-                alert('Failed to pause routine load.');
+                console.error('暂停任务时出错:', error);
             });
-        });
+        }
 
-        document.getElementById('resume-routine-btn').addEventListener('click', function() {
-            let selectedTasks = Array.from(document.querySelectorAll('.task-checkbox:checked')).map(cb => cb.dataset.taskName);
+        function resumeSelectedRoutineLoads() {
+            const selectedTasks = Array.from(document.querySelectorAll('.task-checkbox:checked')).map(cb => cb.dataset.taskName);
             if (selectedTasks.length === 0) {
-                alert("No task selected for resume.");
+                alert('请先选择需要恢复的任务');
                 return;
             }
 
@@ -285,21 +515,25 @@
                 },
                 body: JSON.stringify({ tasks: selectedTasks })
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('网络响应出错');
+                }
+                return response.json();
+            })
             .then(data => {
-                alert('Resume action: ' + data.status);
-                // 可以更新表格状态
+                alert('已恢复选择的任务');
+                loadRoutineLoads(); // 刷新任务列表
             })
             .catch(error => {
-                console.error('Error:', error);
-                alert('Failed to resume routine load.');
+                console.error('恢复任务时出错:', error);
             });
-        });
+        }
 
-        document.getElementById('pause-view-btn').addEventListener('click', function() {
-            let selectedViews = Array.from(document.querySelectorAll('.view-checkbox:checked')).map(cb => cb.dataset.viewName);
+        function pauseSelectedMaterialViews() {
+            const selectedViews = Array.from(document.querySelectorAll('.view-checkbox:checked')).map(cb => cb.dataset.viewName);
             if (selectedViews.length === 0) {
-                alert("No material view selected for pause.");
+                alert('请先选择需要暂停的物化视图');
                 return;
             }
 
@@ -310,21 +544,25 @@
                 },
                 body: JSON.stringify({ views: selectedViews })
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('网络响应出错');
+                }
+                return response.json();
+            })
             .then(data => {
-                alert('Pause action: ' + data.status);
-                // 可以更新表格状态
+                alert('已暂停选择的物化视图');
+                loadMaterialViews(); // 刷新物化视图列表
             })
             .catch(error => {
-                console.error('Error:', error);
-                alert('Failed to pause material view.');
+                console.error('暂停物化视图时出错:', error);
             });
-        });
+        }
 
-        document.getElementById('resume-view-btn').addEventListener('click', function() {
-            let selectedViews = Array.from(document.querySelectorAll('.view-checkbox:checked')).map(cb => cb.dataset.viewName);
+        function resumeSelectedMaterialViews() {
+            const selectedViews = Array.from(document.querySelectorAll('.view-checkbox:checked')).map(cb => cb.dataset.viewName);
             if (selectedViews.length === 0) {
-                alert("No material view selected for resume.");
+                alert('请先选择需要恢复的物化视图');
                 return;
             }
 
@@ -335,17 +573,38 @@
                 },
                 body: JSON.stringify({ views: selectedViews })
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('网络响应出错');
+                }
+                return response.json();
+            })
             .then(data => {
-                alert('Resume action: ' + data.status);
-                // 可以更新表格状态
+                alert('已恢复选择的物化视图');
+                loadMaterialViews(); // 刷新物化视图列表
             })
             .catch(error => {
-                console.error('Error:', error);
-                alert('Failed to resume material view.');
+                console.error('恢复物化视图时出错:', error);
             });
+        }
+
+        // 添加搜索功能
+        document.getElementById('search-button').addEventListener('click', function () {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            const filteredDependencies = allDependencies.filter(dep =>
+                dep.object_name.toLowerCase().includes(searchTerm)
+            );
+            displayDependencies(filteredDependencies); // 显示搜索结果
+
+            // 如果有搜索结果，展示依赖关系图
+            if (filteredDependencies.length > 0) {
+                renderDependencyGraph(filteredDependencies); // 展示所有符合条件的图
+            } else {
+                // 如果没有搜索结果，清空图
+                renderDependencyGraph([]); // 清空依赖图
+            }
         });
     </script>
 </body>
-</html>
 
+</html>
