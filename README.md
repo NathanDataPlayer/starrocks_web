@@ -5,3 +5,12 @@
  -物化视图的的基础作业信息、数据量
  -物化视图的依赖关系查询
  
+基础效果:
+<img width="1742" alt="image" src="https://github.com/user-attachments/assets/4b0d62b7-1822-4fa1-829b-fdc7e2a33749" />
+<img width="1757" alt="image" src="https://github.com/user-attachments/assets/736d438e-f03e-4564-8456-af9a521f6d0c" />
+<img width="1707" alt="image" src="https://github.com/user-attachments/assets/dbbf1111-ca04-496a-8122-9e8aded2cdcd" />
+
+
+欢迎大家提建议和使用！😊
+
+
