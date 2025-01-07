@@ -2250,3 +2250,909 @@ Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-
 [GIN] 2025/01/04 - 15:29:04 | 200 |    1.353102ms |       127.0.0.1 | GET      "/routine-load?db=dw"
 [GIN] 2025/01/04 - 15:29:18 | 200 |    24.51947ms |       127.0.0.1 | GET      "/material-view?db=dw"
 [GIN] 2025/01/04 - 15:29:18 | 200 |    6.240191ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/04 - 15:31:05 | 200 |   34.636668ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 15:33:56 | 200 |    1.464562ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/04 - 15:34:03 | 200 |   20.884229ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 15:34:06 | 200 |    5.223146ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/04 - 15:34:08 | 200 |    1.561343ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/04 - 15:34:19 | 200 |   19.764944ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 15:34:25 | 200 |   16.258532ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 15:36:37 | 200 |    4.931981ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/04 - 15:36:48 | 200 |   19.901148ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 15:38:18 | 200 |    3.100477ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/04 - 15:38:20 | 200 |     664.875µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/04 - 15:38:22 | 200 |    1.177673ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/04 - 15:38:36 | 200 |   26.385333ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 15:38:42 | 200 |    5.143289ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/04 - 15:38:45 | 200 |   16.817332ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 15:40:09 | 200 |    4.080387ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/04 - 15:40:10 | 200 |   21.341008ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 15:45:13 | 200 |    2.271652ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/04 - 15:45:14 | 200 |      762.11µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/04 - 15:45:16 | 200 |    1.902909ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/04 - 15:45:20 | 200 |   23.862244ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 15:45:24 | 200 |    6.005509ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/04 - 15:45:24 | 200 |   21.124973ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 15:47:40 | 200 |    5.328001ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/04 - 15:47:44 | 200 |    1.492126ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/04 - 15:47:46 | 200 |   18.890647ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 15:52:26 | 200 |    2.817881ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/04 - 15:52:27 | 200 |     877.695µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/04 - 15:52:30 | 200 |    1.150241ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/04 - 15:52:30 | 200 |   22.255178ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 15:55:29 | 200 |    4.098841ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/04 - 15:55:29 | 200 |     635.815µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/04 - 15:55:35 | 200 |    1.434885ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/04 - 15:55:36 | 200 |   20.172279ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 15:55:40 | 200 |   10.187809ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/04 - 15:55:41 | 200 |   21.530999ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 15:57:57 | 200 |    4.379572ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/04 - 15:57:58 | 200 |     987.411µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/04 - 15:58:01 | 200 |    1.611032ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/04 - 15:58:02 | 200 |   20.235239ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 15:58:04 | 200 |    9.518795ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/04 - 15:58:05 | 200 |   20.068927ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 16:02:34 | 200 |    3.746885ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/04 - 16:02:38 | 200 |     1.87269ms |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/04 - 16:02:41 | 200 |    1.370112ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/04 - 16:02:41 | 200 |   23.060558ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 16:02:50 | 200 |    5.046219ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/04 - 16:02:51 | 200 |   20.641799ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 16:02:52 | 200 |    4.549077ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/04 - 16:02:54 | 200 |   21.222557ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] Loaded HTML Templates (2): 
+	- 
+	- index.html
+
+[GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
+[GIN-debug] GET    /connect                  --> main.main.func2 (3 handlers)
+[GIN-debug] GET    /databases                --> main.main.func3 (3 handlers)
+[GIN-debug] POST   /routine-load/pause       --> main.main.func4 (3 handlers)
+[GIN-debug] POST   /routine-load/resume      --> main.main.func5 (3 handlers)
+[GIN-debug] GET    /routine-load             --> main.main.func6 (3 handlers)
+[GIN-debug] GET    /material-view            --> main.main.func7 (3 handlers)
+[GIN-debug] GET    /material-view-dependencies --> main.main.func8 (3 handlers)
+[GIN-debug] POST   /material-view/activate   --> main.main.func9 (3 handlers)
+[GIN-debug] POST   /material-view/deactivate --> main.main.func10 (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on 0.0.0.0:7080
+[GIN-debug] [ERROR] listen tcp 0.0.0.0:7080: bind: address already in use
+[GIN] 2025/01/04 - 16:04:56 | 200 |    2.929634ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/04 - 16:04:57 | 200 |     925.458µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/04 - 16:04:59 | 200 |     1.11106ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/04 - 16:05:00 | 200 |    17.18223ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 16:05:03 | 200 |    5.821032ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/04 - 16:05:04 | 200 |   17.348812ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 16:07:23 | 200 |     3.27996ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/04 - 16:07:24 | 200 |     1.10309ms |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/04 - 16:07:27 | 200 |   15.687278ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 16:07:31 | 200 |    1.942891ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/04 - 16:07:31 | 200 |     779.339µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/04 - 16:07:33 | 200 |    2.097219ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/04 - 16:07:34 | 200 |   19.230747ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 16:10:30 | 200 |      2.8855ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/04 - 16:10:31 | 200 |     775.278µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/04 - 16:10:33 | 200 |   15.775967ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 16:10:42 | 200 |    2.010317ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/04 - 16:10:42 | 200 |     739.866µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/04 - 16:10:44 | 200 |   21.554164ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 16:11:08 | 200 |    2.965154ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/04 - 16:11:10 | 200 |      756.02µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/04 - 16:11:13 | 200 |    1.334764ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/04 - 16:11:13 | 200 |   20.722132ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 16:13:15 | 200 |    5.047329ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/04 - 16:13:16 | 200 |     708.167µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/04 - 16:13:19 | 200 |    1.134571ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/04 - 16:13:19 | 200 |   19.517529ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 16:13:24 | 200 |   17.976453ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/04 - 16:13:27 | 200 |   25.462208ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 16:14:59 | 200 |    8.739646ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/04 - 16:15:11 | 200 |   20.334187ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 16:15:18 | 200 |    1.322177ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/04 - 16:15:22 | 200 |   20.833889ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] Loaded HTML Templates (2): 
+	- 
+	- index.html
+
+[GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
+[GIN-debug] GET    /connect                  --> main.main.func2 (3 handlers)
+[GIN-debug] GET    /databases                --> main.main.func3 (3 handlers)
+[GIN-debug] POST   /routine-load/pause       --> main.main.func4 (3 handlers)
+[GIN-debug] POST   /routine-load/resume      --> main.main.func5 (3 handlers)
+[GIN-debug] GET    /routine-load             --> main.main.func6 (3 handlers)
+[GIN-debug] GET    /material-view            --> main.main.func7 (3 handlers)
+[GIN-debug] GET    /material-view-dependencies --> main.main.func8 (3 handlers)
+[GIN-debug] POST   /material-view/activate   --> main.main.func9 (3 handlers)
+[GIN-debug] POST   /material-view/deactivate --> main.main.func10 (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on 0.0.0.0:6080
+[GIN] 2025/01/04 - 16:16:55 | 200 |    5.511658ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/04 - 16:16:56 | 200 |      900.49µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/04 - 16:17:12 | 200 |    1.992825ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/04 - 16:17:12 | 200 |    1.095433ms |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/04 - 16:17:12 | 404 |         700ns |       127.0.0.1 | GET      "/favicon.ico"
+[GIN] 2025/01/04 - 16:17:16 | 200 |   19.579886ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 16:17:20 | 200 |   15.146546ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/04 - 16:17:22 | 200 |   25.143586ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 16:19:57 | 200 |    5.194446ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/04 - 16:19:58 | 200 |     700.782µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/04 - 16:20:02 | 200 |    1.220551ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/04 - 16:20:03 | 200 |   18.902496ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 16:20:08 | 200 |   12.197615ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/04 - 16:20:10 | 200 |   26.563995ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 16:20:31 | 200 |    2.532777ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/04 - 16:20:31 | 200 |     702.402µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/04 - 16:20:34 | 200 |   21.344952ms |       127.0.0.1 | GET      "/material-view?db=dw"
+signal: killed
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] Loaded HTML Templates (2): 
+	- 
+	- index.html
+
+[GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
+[GIN-debug] GET    /connect                  --> main.main.func2 (3 handlers)
+[GIN-debug] GET    /databases                --> main.main.func3 (3 handlers)
+[GIN-debug] POST   /routine-load/pause       --> main.main.func4 (3 handlers)
+[GIN-debug] POST   /routine-load/resume      --> main.main.func5 (3 handlers)
+[GIN-debug] GET    /routine-load             --> main.main.func6 (3 handlers)
+[GIN-debug] GET    /material-view            --> main.main.func7 (3 handlers)
+[GIN-debug] GET    /material-view-dependencies --> main.main.func8 (3 handlers)
+[GIN-debug] POST   /material-view/activate   --> main.main.func9 (3 handlers)
+[GIN-debug] POST   /material-view/deactivate --> main.main.func10 (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on 0.0.0.0:6080
+[GIN] 2025/01/04 - 16:21:44 | 200 |    2.765772ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/04 - 16:21:48 | 200 |    1.167282ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/04 - 16:21:49 | 200 |   16.678584ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 16:21:50 | 200 |    8.543457ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/04 - 16:21:54 | 200 |    2.467987ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/04 - 16:21:55 | 200 |     721.782µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/04 - 16:21:59 | 200 |   20.967358ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 16:22:28 | 200 |    2.562192ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/04 - 16:22:28 | 200 |     693.098µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/04 - 16:22:32 | 200 |   18.100842ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 16:23:57 | 200 |    4.943617ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/04 - 16:23:59 | 200 |      893.47µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/04 - 16:24:05 | 200 |   16.292773ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 16:26:39 | 200 |    4.015722ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/04 - 16:26:40 | 200 |     906.078µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/04 - 16:26:43 | 200 |   20.340532ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/04 - 16:26:46 | 200 |    6.741639ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/04 - 16:26:54 | 200 |   21.284983ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[mysql] 2025/01/05 10:33:36 connection.go:49: closing bad idle connection: EOF
+[GIN] 2025/01/05 - 10:33:36 | 200 |   12.875436ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 10:33:37 | 200 |    1.376222ms |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 10:33:40 | 200 |    1.558708ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 10:33:41 | 200 |   27.952117ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 10:33:47 | 200 |    5.139126ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/05 - 10:40:06 | 200 |     2.40304ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 10:40:07 | 200 |     968.749µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 10:40:21 | 200 |    1.064953ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 10:40:24 | 200 |   19.352097ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 10:40:25 | 200 |    5.686658ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/05 - 10:40:27 | 200 |   21.302125ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 10:42:41 | 200 |    4.455879ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 10:42:42 | 200 |     854.437µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 10:42:45 | 200 |    1.178055ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 10:42:45 | 200 |   19.087188ms |       127.0.0.1 | GET      "/material-view?db=dw"
+signal: killed
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] Loaded HTML Templates (2): 
+	- 
+	- index.html
+
+[GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
+[GIN-debug] GET    /connect                  --> main.main.func2 (3 handlers)
+[GIN-debug] GET    /databases                --> main.main.func3 (3 handlers)
+[GIN-debug] POST   /routine-load/pause       --> main.main.func4 (3 handlers)
+[GIN-debug] POST   /routine-load/resume      --> main.main.func5 (3 handlers)
+[GIN-debug] GET    /routine-load             --> main.main.func6 (3 handlers)
+[GIN-debug] GET    /material-view            --> main.main.func7 (3 handlers)
+[GIN-debug] GET    /material-view-dependencies --> main.main.func8 (3 handlers)
+[GIN-debug] POST   /material-view/activate   --> main.main.func9 (3 handlers)
+[GIN-debug] POST   /material-view/deactivate --> main.main.func10 (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on 0.0.0.0:6080
+[GIN] 2025/01/05 - 10:43:34 | 200 |    2.591755ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 10:43:35 | 200 |     861.866µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 10:43:38 | 200 |    1.935095ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 10:43:40 | 200 |   23.189371ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 10:45:41 | 200 |    6.059407ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 10:45:43 | 200 |   28.633318ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 10:47:10 | 200 |     3.17837ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 10:47:13 | 200 |     2.37553ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 10:47:36 | 200 |    1.771986ms |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 10:47:36 | 404 |         616ns |       127.0.0.1 | GET      "/favicon.ico"
+[GIN] 2025/01/05 - 10:47:43 | 200 |    1.414478ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 10:47:43 | 200 |   19.763293ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 10:50:40 | 200 |    2.867357ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 10:50:41 | 200 |   25.005686ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 10:55:03 | 200 |    3.933488ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 10:55:05 | 200 |    1.166529ms |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 10:55:08 | 200 |    1.379066ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 10:55:10 | 200 |   28.404839ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 10:55:20 | 200 |    2.137589ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 10:55:20 | 200 |     653.444µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 10:55:25 | 200 |    7.449986ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 10:55:28 | 200 |     824.563µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 10:55:28 | 404 |         474ns |       127.0.0.1 | GET      "/favicon.ico"
+[GIN] 2025/01/05 - 10:55:32 | 200 |    5.585667ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 10:55:33 | 200 |   18.510145ms |       127.0.0.1 | GET      "/material-view?db=dw"
+signal: killed
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] Loaded HTML Templates (2): 
+	- 
+	- index.html
+
+[GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
+[GIN-debug] GET    /connect                  --> main.main.func2 (3 handlers)
+[GIN-debug] GET    /databases                --> main.main.func3 (3 handlers)
+[GIN-debug] POST   /routine-load/pause       --> main.main.func4 (3 handlers)
+[GIN-debug] POST   /routine-load/resume      --> main.main.func5 (3 handlers)
+[GIN-debug] GET    /routine-load             --> main.main.func6 (3 handlers)
+[GIN-debug] GET    /material-view            --> main.main.func7 (3 handlers)
+[GIN-debug] GET    /material-view-dependencies --> main.main.func8 (3 handlers)
+[GIN-debug] POST   /material-view/activate   --> main.main.func9 (3 handlers)
+[GIN-debug] POST   /material-view/deactivate --> main.main.func10 (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on 0.0.0.0:6080
+[GIN] 2025/01/05 - 10:55:59 | 200 |    2.656383ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 10:55:59 | 200 |     845.166µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 10:56:02 | 200 |    1.131388ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 10:56:02 | 200 |   36.360646ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 10:58:05 | 200 |   27.942494ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 10:58:27 | 200 |   24.133092ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 11:01:21 | 200 |    3.653333ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 11:01:22 | 200 |     1.71618ms |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 11:01:26 | 200 |    1.103275ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 11:01:28 | 200 |   47.049668ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 11:01:41 | 200 |    2.034529ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 11:02:45 | 200 |    1.932632ms |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 11:02:45 | 404 |         555ns |       127.0.0.1 | GET      "/favicon.ico"
+[GIN] 2025/01/05 - 11:02:51 | 200 |    1.242748ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 11:02:52 | 200 |    17.78286ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 11:02:58 | 200 |    5.322506ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/05 - 11:03:01 | 200 |   25.802569ms |       127.0.0.1 | GET      "/material-view?db=dw"
+signal: killed
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] Loaded HTML Templates (2): 
+	- 
+	- index.html
+
+[GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
+[GIN-debug] GET    /connect                  --> main.main.func2 (3 handlers)
+[GIN-debug] GET    /databases                --> main.main.func3 (3 handlers)
+[GIN-debug] POST   /routine-load/pause       --> main.main.func4 (3 handlers)
+[GIN-debug] POST   /routine-load/resume      --> main.main.func5 (3 handlers)
+[GIN-debug] GET    /routine-load             --> main.main.func6 (3 handlers)
+[GIN-debug] GET    /material-view            --> main.main.func7 (3 handlers)
+[GIN-debug] GET    /material-view-dependencies --> main.main.func8 (3 handlers)
+[GIN-debug] POST   /material-view/activate   --> main.main.func9 (3 handlers)
+[GIN-debug] POST   /material-view/deactivate --> main.main.func10 (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on 0.0.0.0:6080
+[GIN] 2025/01/05 - 11:03:31 | 200 |    2.721825ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 11:03:32 | 200 |     782.196µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 11:03:34 | 200 |    1.209419ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 11:03:35 | 200 |   16.961662ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 11:03:36 | 200 |    6.151098ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/05 - 11:03:37 | 200 |   19.812262ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 11:04:00 | 200 |    2.163663ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 11:04:13 | 200 |     687.641µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 11:04:13 | 404 |       1.022µs |       127.0.0.1 | GET      "/favicon.ico"
+[GIN] 2025/01/05 - 11:04:18 | 200 |    1.513482ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 11:04:19 | 200 |   21.368896ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 11:06:32 | 200 |    4.581332ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 11:06:34 | 200 |    1.132906ms |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 11:06:37 | 200 |    1.168425ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 11:06:38 | 200 |   17.429825ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 11:06:42 | 200 |    4.642188ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/05 - 11:06:43 | 200 |   20.371717ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 11:06:45 | 200 |    3.245553ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 11:06:46 | 200 |      944.06µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 11:06:46 | 404 |         565ns |       127.0.0.1 | GET      "/favicon.ico"
+[GIN] 2025/01/05 - 11:06:49 | 200 |    1.035481ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 11:06:49 | 200 |   17.188133ms |       127.0.0.1 | GET      "/material-view?db=dw"
+signal: killed
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] Loaded HTML Templates (2): 
+	- 
+	- index.html
+
+[GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
+[GIN-debug] GET    /connect                  --> main.main.func2 (3 handlers)
+[GIN-debug] GET    /databases                --> main.main.func3 (3 handlers)
+[GIN-debug] POST   /routine-load/pause       --> main.main.func4 (3 handlers)
+[GIN-debug] POST   /routine-load/resume      --> main.main.func5 (3 handlers)
+[GIN-debug] GET    /routine-load             --> main.main.func6 (3 handlers)
+[GIN-debug] GET    /material-view            --> main.main.func7 (3 handlers)
+[GIN-debug] GET    /material-view-dependencies --> main.main.func8 (3 handlers)
+[GIN-debug] POST   /material-view/activate   --> main.main.func9 (3 handlers)
+[GIN-debug] POST   /material-view/deactivate --> main.main.func10 (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on 0.0.0.0:6080
+[GIN] 2025/01/05 - 11:07:11 | 200 |    2.069227ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 11:07:11 | 200 |     642.988µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 11:07:16 | 200 |    1.078514ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 11:07:17 | 200 |   22.794829ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 11:14:50 | 200 |    3.206158ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 11:14:51 | 200 |    1.325767ms |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 11:14:55 | 200 |    2.609978ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 11:14:56 | 200 |     881.392µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 11:15:31 | 200 |    2.736993ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 11:15:31 | 200 |     707.924µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 11:17:21 | 200 |    4.002356ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 11:17:23 | 200 |     1.08394ms |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 11:17:27 | 200 |    1.343822ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 11:17:28 | 200 |    25.97697ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 11:19:46 | 200 |    3.727482ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 11:19:47 | 200 |     876.642µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 11:19:51 | 200 |     975.098µs |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 11:19:52 | 200 |   22.099519ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 11:19:55 | 200 |    7.905225ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/05 - 11:20:04 | 200 |    5.385808ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 11:25:28 | 200 |   16.600568ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 11:25:34 | 200 |      6.5778ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/05 - 11:36:50 | 200 |    1.606631ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 11:36:51 | 200 |   19.642492ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 11:39:02 | 500 |   14.820449ms |       127.0.0.1 | POST     "/material-view/deactivate"
+[GIN] 2025/01/05 - 11:39:06 | 200 |     2.55788ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 11:39:08 | 200 |     618.049µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 11:39:12 | 200 |    1.212175ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 11:39:13 | 200 |   25.042494ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 11:39:33 | 500 |     845.152µs |       127.0.0.1 | POST     "/material-view/deactivate"
+[GIN] 2025/01/05 - 11:39:34 | 500 |     963.429µs |       127.0.0.1 | POST     "/material-view/deactivate"
+[GIN] 2025/01/05 - 11:39:35 | 500 |     871.514µs |       127.0.0.1 | POST     "/material-view/deactivate"
+[GIN] 2025/01/05 - 11:39:35 | 500 |     749.839µs |       127.0.0.1 | POST     "/material-view/deactivate"
+[GIN] 2025/01/05 - 11:39:35 | 500 |     810.043µs |       127.0.0.1 | POST     "/material-view/deactivate"
+[GIN] 2025/01/05 - 11:39:36 | 500 |     805.274µs |       127.0.0.1 | POST     "/material-view/deactivate"
+[GIN] 2025/01/05 - 11:39:36 | 500 |     839.485µs |       127.0.0.1 | POST     "/material-view/deactivate"
+[GIN] 2025/01/05 - 11:39:36 | 500 |     752.045µs |       127.0.0.1 | POST     "/material-view/deactivate"
+[GIN] 2025/01/05 - 11:39:36 | 500 |     675.955µs |       127.0.0.1 | POST     "/material-view/deactivate"
+[GIN] 2025/01/05 - 11:40:05 | 404 |       1.216µs |       127.0.0.1 | GET      "/material-view/deactivate"
+[GIN] 2025/01/05 - 11:40:13 | 500 |    1.039907ms |       127.0.0.1 | POST     "/material-view/deactivate"
+signal: killed
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] Loaded HTML Templates (2): 
+	- 
+	- index.html
+
+[GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
+[GIN-debug] GET    /connect                  --> main.main.func2 (3 handlers)
+[GIN-debug] GET    /databases                --> main.main.func3 (3 handlers)
+[GIN-debug] POST   /routine-load/pause       --> main.main.func4 (3 handlers)
+[GIN-debug] POST   /routine-load/resume      --> main.main.func5 (3 handlers)
+[GIN-debug] GET    /routine-load             --> main.main.func6 (3 handlers)
+[GIN-debug] GET    /material-view            --> main.main.func7 (3 handlers)
+[GIN-debug] GET    /material-view-dependencies --> main.main.func8 (3 handlers)
+[GIN-debug] POST   /material-view/activate   --> main.main.func9 (3 handlers)
+[GIN-debug] POST   /material-view/deactivate --> main.main.func10 (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on 0.0.0.0:6080
+[GIN] 2025/01/05 - 11:41:50 | 200 |    2.251352ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 11:41:51 | 200 |    1.261577ms |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 11:41:53 | 200 |    1.390371ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 11:41:53 | 200 |   25.109666ms |       127.0.0.1 | GET      "/material-view?db=dw"
+deactive err  Error 1064 (HY000): Getting analyzing error. Detail message: No database selected.
+[GIN] 2025/01/05 - 11:41:59 | 500 |    1.119796ms |       127.0.0.1 | POST     "/material-view/deactivate"
+signal: killed
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] Loaded HTML Templates (2): 
+	- index.html
+	- 
+
+[GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
+[GIN-debug] GET    /connect                  --> main.main.func2 (3 handlers)
+[GIN-debug] GET    /databases                --> main.main.func3 (3 handlers)
+[GIN-debug] POST   /routine-load/pause       --> main.main.func4 (3 handlers)
+[GIN-debug] POST   /routine-load/resume      --> main.main.func5 (3 handlers)
+[GIN-debug] GET    /routine-load             --> main.main.func6 (3 handlers)
+[GIN-debug] GET    /material-view            --> main.main.func7 (3 handlers)
+[GIN-debug] GET    /material-view-dependencies --> main.main.func8 (3 handlers)
+[GIN-debug] POST   /material-view/activate   --> main.main.func9 (3 handlers)
+[GIN-debug] POST   /material-view/deactivate --> main.main.func10 (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on 0.0.0.0:6080
+[GIN] 2025/01/05 - 11:44:56 | 200 |    2.128674ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 11:44:57 | 200 |    2.528509ms |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 11:45:01 | 200 |    1.291216ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 11:45:02 | 200 |   38.494589ms |       127.0.0.1 | GET      "/material-view?db=dw"
+deactive err  Error 1064 (HY000): Getting syntax error at line 1, column 24. Detail message: No viable statement for input 'ALTER MATERIALIZED VIEW .'.
+[GIN] 2025/01/05 - 11:45:08 | 500 |    9.734435ms |       127.0.0.1 | POST     "/material-view/deactivate"
+[GIN] 2025/01/05 - 11:45:12 | 200 |    2.908488ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 11:45:12 | 200 |    1.850893ms |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 11:45:15 | 200 |    1.149329ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 11:45:15 | 200 |   26.855678ms |       127.0.0.1 | GET      "/material-view?db=dw"
+signal: killed
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] Loaded HTML Templates (2): 
+	- 
+	- index.html
+
+[GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
+[GIN-debug] GET    /connect                  --> main.main.func2 (3 handlers)
+[GIN-debug] GET    /databases                --> main.main.func3 (3 handlers)
+[GIN-debug] POST   /routine-load/pause       --> main.main.func4 (3 handlers)
+[GIN-debug] POST   /routine-load/resume      --> main.main.func5 (3 handlers)
+[GIN-debug] GET    /routine-load             --> main.main.func6 (3 handlers)
+[GIN-debug] GET    /material-view            --> main.main.func7 (3 handlers)
+[GIN-debug] GET    /material-view-dependencies --> main.main.func8 (3 handlers)
+[GIN-debug] POST   /material-view/activate   --> main.main.func9 (3 handlers)
+[GIN-debug] POST   /material-view/deactivate --> main.main.func10 (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on 0.0.0.0:6080
+[GIN] 2025/01/05 - 11:46:46 | 200 |    2.128062ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 11:46:46 | 200 |    5.034128ms |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 11:46:49 | 200 |    6.414477ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 11:46:50 | 200 |   24.556842ms |       127.0.0.1 | GET      "/material-view?db=dw"
+query  ALTER MATERIALIZED VIEW .dws_sr_news_di_mv INACTIVE
+deactive err  Error 1064 (HY000): Getting syntax error at line 1, column 24. Detail message: No viable statement for input 'ALTER MATERIALIZED VIEW .'.
+[GIN] 2025/01/05 - 11:46:53 | 500 |    4.284251ms |       127.0.0.1 | POST     "/material-view/deactivate"
+signal: killed
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] Loaded HTML Templates (2): 
+	- 
+	- index.html
+
+[GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
+[GIN-debug] GET    /connect                  --> main.main.func2 (3 handlers)
+[GIN-debug] GET    /databases                --> main.main.func3 (3 handlers)
+[GIN-debug] POST   /routine-load/pause       --> main.main.func4 (3 handlers)
+[GIN-debug] POST   /routine-load/resume      --> main.main.func5 (3 handlers)
+[GIN-debug] GET    /routine-load             --> main.main.func6 (3 handlers)
+[GIN-debug] GET    /material-view            --> main.main.func7 (3 handlers)
+[GIN-debug] GET    /material-view-dependencies --> main.main.func8 (3 handlers)
+[GIN-debug] POST   /material-view/activate   --> main.main.func9 (3 handlers)
+[GIN-debug] POST   /material-view/deactivate --> main.main.func10 (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on 0.0.0.0:6080
+[GIN] 2025/01/05 - 11:51:51 | 200 |    2.286746ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 11:51:52 | 200 |    1.489625ms |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 11:51:54 | 200 |    1.618044ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 11:51:55 | 200 |   18.272336ms |       127.0.0.1 | GET      "/material-view?db=dw"
+query  ALTER MATERIALIZED VIEW .dws_sr_news_di_mv INACTIVE
+deactive err  Error 1064 (HY000): Getting syntax error at line 1, column 24. Detail message: No viable statement for input 'ALTER MATERIALIZED VIEW .'.
+[GIN] 2025/01/05 - 11:51:59 | 500 |    1.654903ms |       127.0.0.1 | POST     "/material-view/deactivate"
+signal: killed
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] Loaded HTML Templates (2): 
+	- 
+	- index.html
+
+[GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
+[GIN-debug] GET    /connect                  --> main.main.func2 (3 handlers)
+[GIN-debug] GET    /databases                --> main.main.func3 (3 handlers)
+[GIN-debug] POST   /routine-load/pause       --> main.main.func4 (3 handlers)
+[GIN-debug] POST   /routine-load/resume      --> main.main.func5 (3 handlers)
+[GIN-debug] GET    /routine-load             --> main.main.func6 (3 handlers)
+[GIN-debug] GET    /material-view            --> main.main.func7 (3 handlers)
+[GIN-debug] GET    /material-view-dependencies --> main.main.func8 (3 handlers)
+[GIN-debug] POST   /material-view/activate   --> main.main.func9 (3 handlers)
+[GIN-debug] POST   /material-view/deactivate --> main.main.func10 (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on 0.0.0.0:6080
+[GIN] 2025/01/05 - 11:54:49 | 200 |    2.314108ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 11:54:49 | 200 |     973.679µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 11:54:52 | 200 |   18.484529ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 11:54:57 | 400 |      18.302µs |       127.0.0.1 | POST     "/material-view/deactivate"
+[GIN] 2025/01/05 - 11:55:20 | 400 |      19.557µs |       127.0.0.1 | POST     "/material-view/deactivate"
+[GIN] 2025/01/05 - 11:56:11 | 200 |    4.627654ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 11:56:12 | 200 |   21.681703ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 11:56:19 | 400 |      14.778µs |       127.0.0.1 | POST     "/material-view/deactivate"
+[GIN] 2025/01/05 - 11:56:20 | 400 |      14.086µs |       127.0.0.1 | POST     "/material-view/deactivate"
+[GIN] 2025/01/05 - 11:56:21 | 400 |      14.646µs |       127.0.0.1 | POST     "/material-view/deactivate"
+[GIN] 2025/01/05 - 11:56:21 | 400 |       91.04µs |       127.0.0.1 | POST     "/material-view/deactivate"
+[GIN] 2025/01/05 - 11:56:21 | 400 |      14.225µs |       127.0.0.1 | POST     "/material-view/deactivate"
+[GIN] 2025/01/05 - 11:57:08 | 404 |         547ns |       127.0.0.1 | GET      "/material-view/deactivate"
+[GIN] 2025/01/05 - 11:57:20 | 404 |         611ns |       127.0.0.1 | GET      "/material-view/deactivate?db=dw"
+[GIN] 2025/01/05 - 11:57:25 | 200 |    2.792187ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 11:57:26 | 200 |    1.277071ms |       127.0.0.1 | GET      "/databases"
+signal: killed
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] Loaded HTML Templates (2): 
+	- 
+	- index.html
+
+[GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
+[GIN-debug] GET    /connect                  --> main.main.func2 (3 handlers)
+[GIN-debug] GET    /databases                --> main.main.func3 (3 handlers)
+[GIN-debug] POST   /routine-load/pause       --> main.main.func4 (3 handlers)
+[GIN-debug] POST   /routine-load/resume      --> main.main.func5 (3 handlers)
+[GIN-debug] GET    /routine-load             --> main.main.func6 (3 handlers)
+[GIN-debug] GET    /material-view            --> main.main.func7 (3 handlers)
+[GIN-debug] GET    /material-view-dependencies --> main.main.func8 (3 handlers)
+[GIN-debug] POST   /material-view/activate   --> main.main.func9 (3 handlers)
+[GIN-debug] POST   /material-view/deactivate --> main.main.func10 (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on 0.0.0.0:6080
+[GIN] 2025/01/05 - 11:58:55 | 200 |    2.086206ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 11:58:55 | 200 |     799.743µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 11:58:57 | 200 |    1.085872ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 11:58:58 | 200 |   19.319723ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 11:59:03 | 400 |      12.975µs |       127.0.0.1 | POST     "/material-view/deactivate"
+[GIN] 2025/01/05 - 11:59:25 | 400 |      15.364µs |       127.0.0.1 | POST     "/material-view/deactivate"
+[GIN] 2025/01/05 - 11:59:45 | 404 |         871ns |       127.0.0.1 | GET      "/material-view/deactivate?db=dw"
+Database Name: test_db
+Views: [dws_sr_news_di_mv]
+query  ALTER MATERIALIZED VIEW test_db.dws_sr_news_di_mv INACTIVE
+deactive err  Error 1064 (HY000): Getting analyzing error. Detail message: Table test_db.dws_sr_news_di_mv is not found.
+[GIN] 2025/01/05 - 12:01:16 | 500 |    3.956363ms |             ::1 | POST     "/material-view/deactivate?db=test_db"
+Database Name: dw
+Views: [dws_sr_news_di_mv]
+query  ALTER MATERIALIZED VIEW dw.dws_sr_news_di_mv INACTIVE
+[GIN] 2025/01/05 - 12:01:44 | 200 |   30.760127ms |             ::1 | POST     "/material-view/deactivate?db=dw"
+[GIN] 2025/01/05 - 12:01:48 | 404 |         907ns |       127.0.0.1 | GET      "/material-view/deactivate?db=dw"
+[GIN] 2025/01/05 - 12:01:51 | 200 |    2.442228ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 12:01:52 | 200 |    1.408134ms |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 12:01:54 | 200 |    37.15428ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 12:01:58 | 200 |    2.765349ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 12:01:58 | 200 |     1.21898ms |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 12:02:03 | 200 |   24.542357ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 19:03:45 | 200 |    2.415667ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 19:03:47 | 200 |     837.041µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 19:03:50 | 200 |    1.397006ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 19:03:51 | 200 |   20.160502ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 19:04:00 | 200 |   19.053718ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/05 - 19:04:02 | 200 |   18.924845ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 19:04:42 | 500 |    2.119418ms |       127.0.0.1 | POST     "/material-view/activate"
+signal: killed
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] Loaded HTML Templates (2): 
+	- 
+	- index.html
+
+[GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
+[GIN-debug] GET    /connect                  --> main.main.func2 (3 handlers)
+[GIN-debug] GET    /databases                --> main.main.func3 (3 handlers)
+[GIN-debug] POST   /routine-load/pause       --> main.main.func4 (3 handlers)
+[GIN-debug] POST   /routine-load/resume      --> main.main.func5 (3 handlers)
+[GIN-debug] GET    /routine-load             --> main.main.func6 (3 handlers)
+[GIN-debug] GET    /material-view            --> main.main.func7 (3 handlers)
+[GIN-debug] GET    /material-view-dependencies --> main.main.func8 (3 handlers)
+[GIN-debug] POST   /material-view/activate   --> main.main.func9 (3 handlers)
+[GIN-debug] POST   /material-view/deactivate --> main.main.func10 (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on 0.0.0.0:6080
+[GIN] 2025/01/05 - 19:12:48 | 200 |    2.106221ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 19:12:52 | 200 |     860.804µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 19:12:55 | 200 |     947.809µs |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 19:12:55 | 200 |   19.896076ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 19:13:00 | 400 |      29.894µs |       127.0.0.1 | POST     "/material-view/activate"
+[GIN] 2025/01/05 - 19:13:29 | 404 |         458ns |       127.0.0.1 | GET      "/material-view/activate"
+signal: killed
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] Loaded HTML Templates (2): 
+	- 
+	- index.html
+
+[GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
+[GIN-debug] GET    /connect                  --> main.main.func2 (3 handlers)
+[GIN-debug] GET    /databases                --> main.main.func3 (3 handlers)
+[GIN-debug] POST   /routine-load/pause       --> main.main.func4 (3 handlers)
+[GIN-debug] POST   /routine-load/resume      --> main.main.func5 (3 handlers)
+[GIN-debug] GET    /routine-load             --> main.main.func6 (3 handlers)
+[GIN-debug] GET    /material-view            --> main.main.func7 (3 handlers)
+[GIN-debug] GET    /material-view-dependencies --> main.main.func8 (3 handlers)
+[GIN-debug] POST   /material-view/activate   --> main.main.func9 (3 handlers)
+[GIN-debug] POST   /material-view/deactivate --> main.main.func10 (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on 0.0.0.0:6080
+[GIN] 2025/01/05 - 19:23:46 | 200 |    2.567117ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 19:23:47 | 200 |     939.859µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 19:23:50 | 200 |    1.699294ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 19:23:50 | 200 |   25.896225ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 19:23:55 | 400 |       14.15µs |       127.0.0.1 | POST     "/material-view/activate"
+[GIN] 2025/01/05 - 19:24:30 | 400 |      13.975µs |       127.0.0.1 | POST     "/material-view/activate"
+[GIN] 2025/01/05 - 19:24:31 | 400 |      15.391µs |       127.0.0.1 | POST     "/material-view/activate"
+[GIN] 2025/01/05 - 19:24:32 | 400 |       13.85µs |       127.0.0.1 | POST     "/material-view/activate"
+requestBody.Views   [dws_sr_news_di_mv]
+query  ALTER MATERIALIZED VIEW dw.dws_sr_news_di_mv ACTIVE
+[GIN] 2025/01/05 - 19:25:28 | 200 |     32.8487ms |             ::1 | POST     "/material-view/activate?db=dw"
+[GIN] 2025/01/05 - 19:25:32 | 200 |    5.688694ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 19:25:33 | 200 |     1.19055ms |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 19:25:37 | 200 |    1.119558ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 19:25:37 | 500 |    39.33819ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 19:25:42 | 200 |    2.357027ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 19:25:43 | 200 |    1.073816ms |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 19:25:47 | 200 |     860.725µs |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 19:25:48 | 200 |   19.622041ms |       127.0.0.1 | GET      "/material-view?db=dw"
+signal: killed
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] Loaded HTML Templates (2): 
+	- 
+	- index.html
+
+[GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
+[GIN-debug] GET    /connect                  --> main.main.func2 (3 handlers)
+[GIN-debug] GET    /databases                --> main.main.func3 (3 handlers)
+[GIN-debug] POST   /routine-load/pause       --> main.main.func4 (3 handlers)
+[GIN-debug] POST   /routine-load/resume      --> main.main.func5 (3 handlers)
+[GIN-debug] GET    /routine-load             --> main.main.func6 (3 handlers)
+[GIN-debug] GET    /material-view            --> main.main.func7 (3 handlers)
+[GIN-debug] GET    /material-view-dependencies --> main.main.func8 (3 handlers)
+[GIN-debug] POST   /material-view/activate   --> main.main.func9 (3 handlers)
+[GIN-debug] POST   /material-view/deactivate --> main.main.func10 (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on 0.0.0.0:6080
+[GIN] 2025/01/05 - 19:31:10 | 200 |    3.288699ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 19:31:12 | 200 |    1.078755ms |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 19:31:14 | 200 |    1.242648ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 19:31:15 | 200 |   20.433495ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 19:31:20 | 404 |         495ns |       127.0.0.1 | POST     "/material-view/deactivate=dw"
+requestBody.Views   [dws_sr_news_di_mv]
+query  ALTER MATERIALIZED VIEW dw.dws_sr_news_di_mv ACTIVE
+[GIN] 2025/01/05 - 19:31:47 | 200 |    1.138689ms |       127.0.0.1 | POST     "/material-view/activate?db=dw"
+[GIN] 2025/01/05 - 19:31:54 | 200 |   21.462877ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 19:31:59 | 200 |    2.141031ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 19:31:59 | 200 |    1.334626ms |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 19:32:02 | 200 |    1.098812ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 19:32:03 | 200 |   15.290662ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 19:33:30 | 404 |         493ns |       127.0.0.1 | POST     "/material-view/deactivate=dw"
+[GIN] 2025/01/05 - 19:37:27 | 404 |         439ns |       127.0.0.1 | POST     "/material-view/deactivate=dw"
+signal: killed
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] Loaded HTML Templates (2): 
+	- 
+	- index.html
+
+[GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
+[GIN-debug] GET    /connect                  --> main.main.func2 (3 handlers)
+[GIN-debug] GET    /databases                --> main.main.func3 (3 handlers)
+[GIN-debug] POST   /routine-load/pause       --> main.main.func4 (3 handlers)
+[GIN-debug] POST   /routine-load/resume      --> main.main.func5 (3 handlers)
+[GIN-debug] GET    /routine-load             --> main.main.func6 (3 handlers)
+[GIN-debug] GET    /material-view            --> main.main.func7 (3 handlers)
+[GIN-debug] GET    /material-view-dependencies --> main.main.func8 (3 handlers)
+[GIN-debug] POST   /material-view/activate   --> main.main.func9 (3 handlers)
+[GIN-debug] POST   /material-view/deactivate --> main.main.func10 (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on 0.0.0.0:6080
+[GIN] 2025/01/05 - 19:37:49 | 200 |    2.243621ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 19:37:50 | 200 |     911.301µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 19:37:54 | 200 |    1.300242ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 19:37:55 | 200 |   21.298659ms |       127.0.0.1 | GET      "/material-view?db=dw"
+Database Name: dw
+Views: [dws_sr_news_di_mv]
+query  ALTER MATERIALIZED VIEW dw.dws_sr_news_di_mv INACTIVE
+[GIN] 2025/01/05 - 19:38:00 | 200 |    2.993354ms |       127.0.0.1 | POST     "/material-view/deactivate?db=dw"
+[GIN] 2025/01/05 - 19:38:02 | 200 |   19.686698ms |       127.0.0.1 | GET      "/material-view?db=dw"
+requestBody.Views   [dws_sr_news_di_mv]
+query  ALTER MATERIALIZED VIEW dw.dws_sr_news_di_mv ACTIVE
+[GIN] 2025/01/05 - 19:38:24 | 200 |    7.747941ms |       127.0.0.1 | POST     "/material-view/activate?db=dw"
+[GIN] 2025/01/05 - 19:38:30 | 500 |   25.226772ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 19:38:33 | 200 |    1.997474ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 19:38:34 | 200 |     699.838µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 19:38:38 | 200 |   16.856231ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 19:38:49 | 200 |    6.832384ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/05 - 19:38:54 | 200 |     955.375µs |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 19:39:22 | 200 |   17.578201ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 19:39:23 | 200 |    5.577102ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/05 - 19:39:23 | 200 |   24.061897ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 19:39:38 | 200 |    1.651769ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 19:39:40 | 200 |    19.52819ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 19:40:12 | 200 |    1.238459ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 19:40:30 | 200 |   18.139722ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 19:40:55 | 200 |    5.356377ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/05 - 19:41:13 | 200 |    1.544398ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 19:41:16 | 200 |   20.150994ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 19:41:53 | 200 |    1.084472ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 19:42:33 | 200 |    19.34256ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 19:42:34 | 200 |    5.153162ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/05 - 19:42:41 | 200 |    1.309725ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 19:42:53 | 200 |   20.380114ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 19:43:01 | 200 |     930.792µs |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 19:45:28 | 200 |   22.699432ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 19:45:29 | 200 |    5.336906ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/05 - 19:45:41 | 200 |    1.091463ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 19:45:53 | 200 |    21.74121ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 19:52:16 | 200 |    2.174971ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 19:52:22 | 200 |   23.823298ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 19:52:22 | 200 |    5.217674ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/05 - 19:52:24 | 200 |    1.148889ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 19:53:07 | 200 |     1.07638ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 19:53:10 | 200 |   26.275418ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 19:53:11 | 200 |    4.152697ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/05 - 19:53:12 | 200 |    1.226165ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 19:53:24 | 200 |   18.583048ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 19:53:25 | 200 |    1.138309ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 19:53:27 | 200 |    1.063703ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 19:53:51 | 200 |     977.656µs |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 19:53:53 | 200 |    1.322855ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 19:54:00 | 200 |   24.937946ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 19:54:01 | 200 |   19.382353ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 19:58:36 | 200 |    5.581577ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 19:58:38 | 200 |     774.193µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 19:58:42 | 200 |    1.068271ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 19:58:44 | 200 |   36.733206ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 19:58:46 | 200 |    3.733098ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/05 - 19:58:47 | 200 |     1.08763ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 19:58:50 | 200 |   17.815618ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 19:58:51 | 200 |     959.891µs |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 19:58:52 | 200 |    4.411418ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/05 - 19:58:54 | 200 |    1.347621ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 19:59:06 | 200 |    6.440989ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/05 - 19:59:11 | 200 |   22.392644ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 20:01:24 | 200 |    4.854801ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 20:01:26 | 200 |    1.160125ms |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 20:01:30 | 200 |     897.939µs |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 20:01:31 | 200 |   24.542939ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 20:01:33 | 200 |    5.115974ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/05 - 20:01:37 | 200 |    2.775156ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 20:01:37 | 200 |     784.809µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 20:01:43 | 200 |    1.085625ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 20:01:43 | 200 |   23.578198ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 20:01:44 | 200 |    8.045509ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/05 - 20:02:24 | 200 |    5.440897ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/05 - 20:02:26 | 200 |    1.587144ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 20:02:29 | 200 |   20.937561ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 20:02:30 | 200 |    5.573351ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/05 - 20:02:57 | 200 |   19.560135ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 20:03:01 | 200 |    1.070864ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 20:03:03 | 200 |     5.29157ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/05 - 20:05:03 | 200 |    3.896461ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 20:05:05 | 200 |     884.925µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 20:05:08 | 200 |    1.098882ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 20:05:09 | 200 |   19.226103ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 20:05:10 | 200 |    6.684608ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/05 - 20:05:14 | 200 |   18.603068ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 20:05:17 | 200 |     1.06148ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 20:05:20 | 200 |   15.808036ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 20:05:23 | 200 |     946.324µs |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 20:05:32 | 200 |   19.270264ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 20:05:35 | 200 |     988.064µs |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 20:06:32 | 200 |   21.487009ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 20:06:34 | 200 |    1.086221ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 20:06:35 | 200 |   19.429999ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 20:06:41 | 200 |    1.193989ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 20:07:18 | 200 |    1.100408ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 20:07:37 | 200 |   22.008469ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 20:07:40 | 200 |    17.00653ms |       127.0.0.1 | GET      "/material-view?db=dw"
+signal: killed
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] Loaded HTML Templates (2): 
+	- 
+	- index.html
+
+[GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
+[GIN-debug] GET    /connect                  --> main.main.func2 (3 handlers)
+[GIN-debug] GET    /databases                --> main.main.func3 (3 handlers)
+[GIN-debug] POST   /routine-load/pause       --> main.main.func4 (3 handlers)
+[GIN-debug] POST   /routine-load/resume      --> main.main.func5 (3 handlers)
+[GIN-debug] GET    /routine-load             --> main.main.func6 (3 handlers)
+[GIN-debug] GET    /routine-load/search      --> main.main.func7 (3 handlers)
+[GIN-debug] GET    /material-view            --> main.main.func8 (3 handlers)
+[GIN-debug] GET    /material-view/search     --> main.main.func9 (3 handlers)
+[GIN-debug] GET    /material-view-dependencies --> main.main.func10 (3 handlers)
+[GIN-debug] POST   /material-view/activate   --> main.main.func11 (3 handlers)
+[GIN-debug] POST   /material-view/deactivate --> main.main.func12 (3 handlers)
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on 0.0.0.0:6080
+[GIN] 2025/01/05 - 20:13:29 | 200 |    5.040715ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 20:13:31 | 200 |    1.577389ms |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 20:13:34 | 200 |    1.091648ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 20:15:30 | 200 |   32.587105ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 20:15:30 | 200 |   53.438867ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/05 - 20:15:31 | 200 |    1.277937ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 20:15:33 | 200 |   28.601033ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 20:15:33 | 200 |   10.249831ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/05 - 20:15:36 | 200 |    1.485761ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 20:15:36 | 200 |   17.503643ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 20:15:37 | 200 |    5.835057ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"
+[GIN] 2025/01/05 - 20:15:38 | 200 |    1.453797ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 20:18:24 | 200 |    4.637639ms |       127.0.0.1 | GET      "/"
+[GIN] 2025/01/05 - 20:18:28 | 200 |     647.313µs |       127.0.0.1 | GET      "/databases"
+[GIN] 2025/01/05 - 20:18:31 | 200 |    1.254423ms |       127.0.0.1 | GET      "/routine-load?db=dw"
+[GIN] 2025/01/05 - 20:18:34 | 200 |    1.144429ms |       127.0.0.1 | GET      "/routine-load/search?db=dw&name=routine_load_01"
+[GIN] 2025/01/05 - 20:18:46 | 200 |   18.662617ms |       127.0.0.1 | GET      "/material-view?db=dw"
+[GIN] 2025/01/05 - 20:18:53 | 200 |   21.358489ms |       127.0.0.1 | GET      "/material-view/search?db=dw&name=dws_sr_news_di_mv"
+[GIN] 2025/01/05 - 20:19:03 | 200 |    6.242035ms |       127.0.0.1 | GET      "/material-view-dependencies?db=dw"

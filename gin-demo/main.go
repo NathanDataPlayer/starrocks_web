@@ -293,23 +293,30 @@ func getMaterialViewDependencies(dbName string) ([]MaterialViewDependency, error
 }
 
 // 激活物化视图
-func activateMaterialView(viewName string) error {
+func activateMaterialView(viewName string,dbName string) error {
 	if db == nil {
 		return fmt.Errorf("database connection is not initialized")
 	}
 
-	query := "ALTER MATERIALIZED VIEW " + viewName + " ACTIVE"
+
+	query := fmt.Sprintf("ALTER MATERIALIZED VIEW %s.%s ACTIVE", dbName, viewName)
+	fmt.Println("query ",query)
 	_, err := db.Exec(query)
+	if err != nil {
+		fmt.Println("SQL error:", err)
+		return err
+	}
 	return err
 }
 
 // 停用物化视图
-func deactivateMaterialView(viewName string) error {
+func deactivateMaterialView(viewName string,dbName string) error {
 	if db == nil {
 		return fmt.Errorf("database connection is not initialized")
 	}
 
-	query := "ALTER MATERIALIZED VIEW " + viewName + " INACTIVE"
+	query := fmt.Sprintf("ALTER MATERIALIZED VIEW %s.%s INACTIVE", dbName, viewName)
+	fmt.Println("query ",query)
 	_, err := db.Exec(query)
 	return err
 }
@@ -462,6 +469,34 @@ func main() {
 		c.JSON(http.StatusOK, gin.H{"routineLoads": routineLoads})
 	})
 
+
+	r.GET("/routine-load/search", func(c *gin.Context) {
+		dbName := c.Query("db")
+		name := c.Query("name") // 获取搜索名称
+	
+		if dbName == "" || name == "" {
+			c.JSON(http.StatusBadRequest, gin.H{"status": "failed", "message": "database name and search name are required"})
+			return
+		}
+	
+		routineLoads, err := getRoutineLoads(dbName)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"status": "failed", "message": err.Error()})
+			return
+		}
+	
+		// 根据名称过滤数据
+		var filteredRoutineLoads []RoutineLoad
+		for _, load := range routineLoads {
+			if strings.Contains(strings.ToLower(load.Name), strings.ToLower(name)) {
+				filteredRoutineLoads = append(filteredRoutineLoads, load)
+			}
+		}
+	
+		c.JSON(http.StatusOK, gin.H{"routineLoads": filteredRoutineLoads})
+	})
+
+
 	r.GET("/material-view", func(c *gin.Context) {
 		dbName := c.Query("db")
 		if dbName == "" {
@@ -475,6 +510,33 @@ func main() {
 			return
 		}
 		c.JSON(http.StatusOK, gin.H{"materialViews": materialViews})
+	})
+
+
+	r.GET("/material-view/search", func(c *gin.Context) {
+		dbName := c.Query("db")
+		name := c.Query("name") // 获取搜索名称
+	
+		if dbName == "" || name == "" {
+			c.JSON(http.StatusBadRequest, gin.H{"status": "failed", "message": "database name and search name are required"})
+			return
+		}
+	
+		materialViews, err := getMaterialViews(dbName)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"status": "failed", "message": err.Error()})
+			return
+		}
+	
+		// 根据名称过滤数据
+		var filteredMaterialViews []MaterialView
+		for _, view := range materialViews {
+			if strings.Contains(strings.ToLower(view.Name), strings.ToLower(name)) {
+				filteredMaterialViews = append(filteredMaterialViews, view)
+			}
+		}
+	
+		c.JSON(http.StatusOK, gin.H{"materialViews": filteredMaterialViews})
 	})
 
 	r.GET("/material-view-dependencies", func(c *gin.Context) {
@@ -493,6 +555,13 @@ func main() {
 	})
 
 	r.POST("/material-view/activate", func(c *gin.Context) {
+
+		dbName := c.Query("db")
+		if dbName == "" {
+			c.JSON(http.StatusBadRequest, gin.H{"status": "failed", "message": "database name is required"})
+			return
+		}
+
 		var requestBody struct {
 			Views []string `json:"views"`
 		}
@@ -501,8 +570,10 @@ func main() {
 			return
 		}
 
+		fmt.Println("requestBody.Views  ",requestBody.Views )
+
 		for _, viewName := range requestBody.Views {
-			err := activateMaterialView(viewName)
+			err := activateMaterialView(viewName, dbName)
 			if err != nil {
 				c.JSON(http.StatusInternalServerError, gin.H{"status": "failed", "message": err.Error()})
 				return
@@ -513,17 +584,31 @@ func main() {
 	})
 
 	r.POST("/material-view/deactivate", func(c *gin.Context) {
+
+		dbName := c.Query("db")
+		if dbName == "" {
+			c.JSON(http.StatusBadRequest, gin.H{"status": "failed", "message": "database name is required"})
+			return
+		}
+		
+		fmt.Println("Database Name:", dbName) 
+
 		var requestBody struct {
 			Views []string `json:"views"`
 		}
+
 		if err := c.ShouldBindJSON(&requestBody); err != nil {
+			fmt.Println("Request Body Error:", err)
 			c.JSON(http.StatusBadRequest, gin.H{"status": "failed", "message": "invalid request"})
 			return
 		}
 
+		fmt.Println("Views:", requestBody.Views)
+
 		for _, viewName := range requestBody.Views {
-			err := deactivateMaterialView(viewName)
+			err := deactivateMaterialView(viewName,dbName)
 			if err != nil {
+				fmt.Println("deactive err ", err)
 				c.JSON(http.StatusInternalServerError, gin.H{"status": "failed", "message": err.Error()})
 				return
 			}
@@ -532,5 +617,5 @@ func main() {
 		c.JSON(http.StatusOK, gin.H{"status": "ok"})
 	})
 
-	r.Run("0.0.0.0:7080")
+	r.Run("0.0.0.0:6080")
 }

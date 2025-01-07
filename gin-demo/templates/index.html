@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Routine Load and Material View Dashboard</title>
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/vis-network/styles/vis-network.css" />
-    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/vis-network/styles/vis-network.css" />
+    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -120,11 +121,6 @@
             background-color: #9E9E9E;
         }
 
-        .properties {
-            max-width: 300px;
-            white-space: pre-wrap;
-        }
-
         button {
             padding: 10px 15px;
             margin-right: 5px;
@@ -134,7 +130,7 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background 0.3s;
-            height: 40px; /* 设置按钮高度 */
+            height: 40px;
         }
 
         button:hover {
@@ -150,30 +146,33 @@
 
         /* 数据库选择下拉框样式 */
         #dbSelector {
-            height: 40px; /* 设置选择框高度 */
-            width: 220px; /* 设置宽度，可以根据需要调整 */
-            padding: 0 10px; /* 添加内边距 */
-            border: 1px solid #ccc; /* 边框样式 */
-            border-radius: 5px; /* 边框圆角 */
-            margin-bottom: 20px; /* 为选择数据库的下拉列表添加底部边距 */
-            appearance: none; /* 去掉默认样式，使其更一致 */
+            height: 40px;
+            width: 220px;
+            padding: 0 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            appearance: none;
         }
 
         /* 为搜索框和按钮设置统一的样式 */
-        #search-container {
+        .search-container {
             margin-bottom: 20px;
+            display: flex;
+            align-items: center;
         }
 
-        #search-input {
-            height: 40px; /* 设置搜索框高度 */
-            width: 200px; /* 可以根据需要调整宽度 */
-            padding: 0 10px; /* 添加内边距 */
-            border: 1px solid #ccc; /* 边框样式 */
+        .search-input {
+            height: 40px;
+            width: 200px;
+            padding: 0 10px;
+            border: 1px solid #ccc;
             border-radius: 5px;
+            margin-right: 5px; /* 增加右边距 */
         }
 
-        #search-button {
-            height: 40px; /* 确保与搜索框一致的高度 */
+        .search-button {
+            height: 40px;
         }
     </style>
 </head>
@@ -198,6 +197,10 @@
         </div>
 
         <div id="routine-load-section">
+            <div class="search-container">
+                <input type="text" id="routine-search-input" placeholder="搜索 Routine Load" class="search-input">
+                <button id="routine-search-button" class="search-button">搜索</button>
+            </div>
             <button id="pause-routine-btn" onclick="pauseSelectedRoutineLoads()">Pause Selected</button>
             <button id="resume-routine-btn" onclick="resumeSelectedRoutineLoads()">Resume Selected</button>
 
@@ -236,8 +239,14 @@
         </div>
 
         <div id="material-view-section" style="display:none;">
+            <div class="search-container">
+                <input type="text" id="material-search-input" placeholder="搜索 Material View" class="search-input">
+                <button id="material-search-button" class="search-button">搜索</button>
+            </div>
             <button id="pause-view-btn" onclick="pauseSelectedMaterialViews()">Pause Selected</button>
             <button id="resume-view-btn" onclick="resumeSelectedMaterialViews()">Resume Selected</button>
+
+            <canvas id="materialViewChart" width="500" height="250" style="width: 500px; height: 250px;"></canvas> <!-- 调整图表尺寸 -->
 
             <table>
                 <thead>
@@ -267,9 +276,9 @@
 
         <div id="dependency-view-section" style="display:none;">
             <h3>Material View Dependencies</h3>
-            <div id="search-container">
-                <input type="text" id="search-input" placeholder="搜索 Object Name">
-                <button id="search-button">搜索</button>
+            <div id="search-container" class="search-container">
+                <input type="text" id="search-input" placeholder="搜索 Object Name" class="search-input">
+                <button id="search-button" class="search-button">搜索</button>
             </div>
             <div id="network"></div>
             <table>
@@ -388,6 +397,7 @@
                     materialViewsData = data.materialViews; // 存储所有数据
                     displayMaterialViews(); // 显示当前页面数据
                     renderMaterialViewPagination(); // 渲染分页控件
+                    updateMaterialViewChart(); // 更新图表
                 })
                 .catch(error => {
                     console.error('获取物化视图时出错:', error);
@@ -420,6 +430,73 @@
                 .catch(error => {
                     console.error('获取物化视图依赖关系时出错:', error);
                 });
+        }
+
+        function updateMaterialViewChart() {
+            // 统计数量
+            const activeCount = materialViewsData.filter(view => view.is_active === true).length; // Is Active 为 true
+            const inactiveCount = materialViewsData.filter(view => view.is_active === false).length; // Is Active 为 false
+            const successCount = materialViewsData.filter(view => view.last_refresh_state.toLowerCase() === 'success').length; // Last Refresh State 为 success
+            const failureCount = materialViewsData.filter(view => view.last_refresh_state.toLowerCase() === 'failed').length; // Last Refresh State 为 failed
+
+            // 创建图表数据
+            const data = {
+                labels: ['Active Views', 'Inactive Views', 'Successful Refreshes', 'Failure Refreshes'],
+                datasets: [{
+                    label: 'Counts',
+                    data: [activeCount, inactiveCount, successCount, failureCount],
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 99, 132, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 99, 132, 1)',
+                        'rgba(255, 99, 132, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            };
+
+            // 配置图表
+            const config = {
+                type: 'bar', // 使用条形图
+                data: data,
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            barThickness: 5, // 控制各个柱子的宽度
+                            categoryPercentage: 0.4, // 柱子的类别占比
+                            barPercentage: 0.5 // 每个类别的柱子占比
+                        },
+                        y: {
+                            beginAtZero: true // 让y轴从零开始
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Material View Status Count'
+                        }
+                    }
+                },
+            };
+
+            // 渲染图表
+            const myChartContainer = document.getElementById('materialViewChart');
+            if (myChartContainer.chartInstance) {
+                myChartContainer.chartInstance.destroy(); // 如果已有图表实例，先销毁
+            }
+
+            myChartContainer.chartInstance = new Chart(myChartContainer, config);
+            myChartContainer.chartInstance.resize(); 
         }
 
         function displayRoutineLoads() {
@@ -468,7 +545,7 @@
 
             currentPageData.forEach(view => {
                 const tr = document.createElement('tr');
-                const isActiveBadge = view.is_active ? '是' : '否';
+                const isActiveBadge = view.is_active ? 'True' : 'False'; // 显示布尔值
                 const lastRefreshStateBadge = view.last_refresh_state.toLowerCase();
                 const lastRefreshStateColor = {
                     'success': 'running',
@@ -624,19 +701,19 @@
                 },
                 body: JSON.stringify({ tasks: selectedTasks })
             })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('网络响应出错');
-                }
-                return response.json();
-            })
-            .then(data => {
-                alert('已暂停选择的任务');
-                loadRoutineLoads(); // 刷新任务列表
-            })
-            .catch(error => {
-                console.error('暂停任务时出错:', error);
-            });
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('网络响应出错');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    alert('已暂停选择的任务');
+                    loadRoutineLoads(); // 刷新任务列表
+                })
+                .catch(error => {
+                    console.error('暂停任务时出错:', error);
+                });
         }
 
         function resumeSelectedRoutineLoads() {
@@ -653,19 +730,19 @@
                 },
                 body: JSON.stringify({ tasks: selectedTasks })
             })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('网络响应出错');
-                }
-                return response.json();
-            })
-            .then(data => {
-                alert('已恢复选择的任务');
-                loadRoutineLoads(); // 刷新任务列表
-            })
-            .catch(error => {
-                console.error('恢复任务时出错:', error);
-            });
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('网络响应出错');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    alert('已恢复选择的任务');
+                    loadRoutineLoads(); // 刷新任务列表
+                })
+                .catch(error => {
+                    console.error('恢复任务时出错:', error);
+                });
         }
 
         function pauseSelectedMaterialViews() {
@@ -675,26 +752,28 @@
                 return;
             }
 
-            fetch('/material-view/deactivate', {
+            const dbName = document.getElementById('dbSelector').value;
+
+            fetch(`/material-view/deactivate?db=${dbName}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({ views: selectedViews })
             })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('网络响应出错');
-                }
-                return response.json();
-            })
-            .then(data => {
-                alert('已暂停选择的物化视图');
-                loadMaterialViews(); // 刷新物化视图列表
-            })
-            .catch(error => {
-                console.error('暂停物化视图时出错:', error);
-            });
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('网络响应出错');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    alert('已暂停选择的物化视图');
+                    loadMaterialViews(); // 刷新物化视图列表
+                })
+                .catch(error => {
+                    console.error('暂停物化视图时出错:', error);
+                });
         }
 
         function resumeSelectedMaterialViews() {
@@ -704,44 +783,140 @@
                 return;
             }
 
-            fetch('/material-view/activate', {
+            const dbName = document.getElementById('dbSelector').value; // 获取数据库名称
+            console.log("Selected DB Name:", dbName);
+            console.log("Selected Views:", selectedViews); // 先打印出选中的视图名称
+
+            fetch(`/material-view/activate?db=${dbName}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({ views: selectedViews })
             })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('网络响应出错');
-                }
-                return response.json();
-            })
-            .then(data => {
-                alert('已恢复选择的物化视图');
-                loadMaterialViews(); // 刷新物化视图列表
-            })
-            .catch(error => {
-                console.error('恢复物化视图时出错:', error);
-            });
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('网络响应出错');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    alert('已恢复选择的物化视图');
+                    loadMaterialViews(); // 刷新物化视图列表
+                })
+                .catch(error => {
+                    console.error('恢复物化视图时出错:', error);
+                });
         }
 
         // 添加搜索功能
-        document.getElementById('search-button').addEventListener('click', function () {
-            const searchTerm = document.getElementById('search-input').value.toLowerCase();
-            const filteredDependencies = allDependencies.filter(dep =>
-                dep.object_name.toLowerCase().includes(searchTerm)
-            );
-            displayDependencies(filteredDependencies); // 显示搜索结果
-
-            // 如果有搜索结果，展示依赖关系图
-            if (filteredDependencies.length > 0) {
-                renderDependencyGraph(filteredDependencies); // 展示所有符合条件的图
-            } else {
-                // 如果没有搜索结果，清空图
-                renderDependencyGraph([]); // 清空依赖图
-            }
+        // Routine Load 搜索功能
+        document.getElementById('routine-search-button').addEventListener('click', function () {
+            const searchTerm = document.getElementById('routine-search-input').value;
+            const dbName = document.getElementById('dbSelector').value; // 获取数据库名称
+            fetch(`/routine-load/search?db=${dbName}&name=${encodeURIComponent(searchTerm)}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('网络响应出错');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    displayFilteredRoutineLoads(data.routineLoads); // 显示过滤后的数据
+                })
+                .catch(error => {
+                    console.error('搜索例程加载出错:', error);
+                });
         });
+
+        // Material View 搜索功能
+        document.getElementById('material-search-button').addEventListener('click', function () {
+            const searchTerm = document.getElementById('material-search-input').value;
+            const dbName = document.getElementById('dbSelector').value; // 获取数据库名称
+            fetch(`/material-view/search?db=${dbName}&name=${encodeURIComponent(searchTerm)}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('网络响应出错');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    displayFilteredMaterialViews(data.materialViews); // 显示过滤后的数据
+                })
+                .catch(error => {
+                    console.error('搜索物化视图出错:', error);
+                });
+        });
+
+        // 显示过滤后的 Routine Load 数据
+        function displayFilteredRoutineLoads(filteredData) {
+            const tbody = document.getElementById('routine-load-body');
+            tbody.innerHTML = ''; // 清空之前的数据
+
+            filteredData.forEach(load => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><input type="checkbox" class="task-checkbox" data-task-name="${load.name}"></td>
+                    <td>${load.id}</td>
+                    <td>${load.name}</td>
+                    <td>${load.create_time}</td>
+                    <td>${load.pause_time || '-'}</td>
+                    <td>${load.end_time || '-'}</td>
+                    <td>${load.db_name}</td>
+                    <td>${load.table_name}</td>
+                    <td><span class="state-badge ${load.state.toLowerCase()}">${load.state}</span></td>
+                    <td>${load.data_source_type}</td>
+                    <td>${load.current_task_num}</td>
+                    <td class="properties">${load.job_properties}</td>
+                    <td class="properties">${load.data_source_properties}</td>
+                    <td class="properties">${load.custom_properties}</td>
+                    <td class="properties">${load.statistic}</td>
+                    <td class="properties">${load.progress}</td>
+                    <td class="properties">${load.timestamp_progress}</td>
+                    <td>${load.reason_of_state_changed || '-'}</td>
+                    <td>${load.error_log_urls ? `<a href="${load.error_log_urls}" target="_blank">View Logs</a>` : '-'}</td>
+                    <td>${load.tracking_sql || '-'}</td>
+                    <td>${load.other_msg || '-'}</td>
+                    <td class="properties">${load.latest_source_position}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // 显示过滤后的 Material View 数据
+        function displayFilteredMaterialViews(filteredData) {
+            const tbody = document.getElementById('material-view-body');
+            tbody.innerHTML = ''; // 清空之前的数据
+
+            filteredData.forEach(view => {
+                const tr = document.createElement('tr');
+                const isActiveBadge = view.is_active ? 'True' : 'False'; // 显示布尔值
+                const lastRefreshStateBadge = view.last_refresh_state.toLowerCase();
+                const lastRefreshStateColor = {
+                    'success': 'running',
+                    'failed': 'failed',
+                    'paused': 'paused'
+                }[lastRefreshStateBadge] || 'unknown';
+
+                tr.innerHTML = `
+                    <td><input type="checkbox" class="view-checkbox" data-view-name="${view.name}"></td>
+                    <td>${view.id}</td>
+                    <td>${view.name}</td>
+                    <td>${view.database_name}</td>
+                    <td>${view.refresh_type}</td>
+                    <td>${isActiveBadge}</td>
+                    <td><span class="state-badge ${lastRefreshStateColor}">${view.last_refresh_state}</span></td>
+                    <td>${view.rows}</td>
+                    <td>${view.last_refresh_start_time}</td>
+                    <td>${view.last_refresh_finished_time || '-'}</td>
+                    <td>${view.last_refresh_base_refresh_partitions}</td>
+                    <td>${view.last_refresh_mv_refresh_partitions}</td>
+                    <td>${view.last_refresh_error_code}</td>
+                    <td>${view.last_refresh_error_message || '-'}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
     </script>
 </body>
 
